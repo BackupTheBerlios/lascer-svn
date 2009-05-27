@@ -1,0 +1,340 @@
+# Datei          : lascerParamStandard
+# Letzte Änderung: 19. Dezember 2007 durch Dietmar Lippold
+# Autoren        : Dietmar Lippold, Copyright 2007
+#
+# Diese Datei gehört zum Projekt Lascer (http://lascer.berlios.de/).
+# Siehe Datei "license.txt" für Hinweise zur Lizenz.
+
+# Datei mit den Standard-Werten der Konfigurations-Parametern für Lascer. Sie
+# kann als Grundlage für eine Datei mit modifizierten Werte verwendet werden.
+# Der Name der (neuen) Parameter-Datei ist der Klasse FormelErzeugung oder
+# Weka als Kommandozeilen-Parameter der Option -configParam zu übergeben.
+# Unabhängig von den folgenden Parametern kann noch die Option -logging ohne
+# weiteren Wert in der Kommandozeile angegeben werden.
+
+# Die möglichen Werte sind jeweil angegeben. In einer auskommentierten Zeile
+# ist der Name der Option und deren Standard-Wert angegeben.
+
+
+
+#
+# Parameter für die Einschränkung der zu verwendenden Daten.
+#
+
+# Gibt an, ob eingelesene Beispiele mit unbekannten Attributwerten verwendet
+# werden sollen. Falls nicht, werden Beispiele mit solchen Werten verworfen.
+#
+# Mögliche Werte: ja, nein
+# unbekWertBsp = ja
+
+# Gibt den Prozent-Anteil der positiven Beispiele an, der vor der Erzeugung
+# einer Formel oder eines Konzepts entfernt wird. Dabei werden die Beispiele
+# mit der höchsten auf sie entfallenden Komplexität entfernt.
+#
+# Mögliche Werte: float
+# posPruneAnt = 0.0
+
+# Gibt den Prozent-Anteil der negativen Beispiele an, der vor der Erzeugung
+# einer Formel oder eines Konzepts entfernt wird. Dabei werden die Beispiele
+# mit der höchsten auf sie entfallenden Komplexität entfernt.
+#
+# Mögliche Werte: float
+# negPruneAnt = 0.0
+
+
+#
+# Parameter für die Erzeugung der Prädikate.
+#
+
+# Gibt an, ob aus int-Attributen zusätzlich real-Attribute erzeugt werden
+# sollen.
+#
+# Mögliche Werte: ja, nein
+# ergRealVonInt = nein
+
+# Gibt an, ob Prädikate zum Vergleich von nominalen Attributen
+# untereinander erzeugt werden sollen.
+#
+# Mögliche Werte: ja, nein
+# nomNomPraedErz = nein
+
+# Gibt an, ob Prädikate zum Vergleich von int-Attributen untereinander
+# erzeugt werden sollen.
+#
+# Mögliche Werte: ja, nein
+# intIntPraedErz = nein
+
+# Gibt an, ob Prädikate zum Vergleich von real-Attributen untereinander
+# erzeugt werden sollen.
+#
+# Mögliche Werte: ja, nein
+# realRealPraedErz = nein
+
+# Gibt an, ob bei Funktionen mit ganzzahligen Werten Prädikate nur zu
+# Halb-Intervallen erzeugt werden sollen. Falls nicht, werden Prädikate
+# zu Intervallen aller Arten erzeugt.
+#
+# Mögliche Werte: ja, nein
+# nurHalbIntItv = nein
+
+# Gibt an, ob bei Funktionen mit Fließkomma-Werten Prädikate nur zu
+# Halb-Intervallen erzeugt werden sollen. Falls nicht, werden Prädikate
+# zu Intervallen aller Arten erzeugt.
+#
+# Mögliche Werte: ja, nein
+# nurHalbRealItv = nein
+
+# Gibt an, ob Prädikate mittels Hyperebenen zu den real-Attributen erzeugt
+# werden sollen.
+#
+# Mögliche Werte: ja, nein
+# hypEbenPraedErz = nein
+
+# Gibt die maximale Anzahl von Hyperebenen an, die für die Erzeugung der
+# entsprechenden Prädikate erzeugt werden sollen. Der Wert Null steht für
+# eine unbeschränkte Anzahl.
+#
+# Mögliche Werte: integer
+# maxHypEbenAnz = 20000
+
+# Die maximale Anzahl der elementaren Funktionen in den zu erzeugenden
+# int-Funktionen.
+#
+# Mögliche Werte: integer
+# maxIntFunkKompl = 4
+
+# Die maximale Anzahl der elementaren Funktionen in den zu erzeugenden
+# real-Funktionen.
+#
+# Mögliche Werte: integer
+# maxRealFunkKompl = 4
+
+
+#
+# Parameter für die Erzeugung der Prädikate und der Konzept-Erzeuger.
+#
+
+# Gibt die Nummer des Wertes der boolschen Attribute an (Null oder Eins),
+# nur für den Prädikate, jedoch auch negierte, d.h. invertierte Literale,
+# erzeugt werden sollen. Wenn der Wert negativ ist, werden für beide Werte
+# Prädikate erzeugt, jedoch keine negierten. Die Nummer bezieht sich auf
+# die Reihenfolge der Werte bei der Angabe des Attributs in der ARFF-Datei.
+#
+# Mögliche Werte: integer
+# boolWertPraedNummer = -1
+
+
+#
+# Parameter für die Erzeugung der Konzept-Erzeuger.
+#
+
+# Gibt an, ob der Zufallsgenerator bei jedem Lauf mit einem anderen Wert
+# initialisiert werden soll. Falls nein, wird er jedes Mal mit dem gleichen
+# Wert initialisiert.
+#
+# Mögliche Werte: ja, nein
+# zufall = nein
+
+# Gibt an, ob die Berechnungen mittels Architeuthis verteilt durchgeführt
+# werden sollen. Falls nein, wird eine lokale Berechnung durchgeführt.
+#
+# Mögliche Werte: ja, nein
+# verteilt = nein
+
+# Die Wahrscheinlichkeit, mit der bei einer parallelen Verarbeitung
+# mehrerer Teilprobleme ein nicht überdecktes bzw. nicht ausgeschlossenes
+# Beispiel als überdeckt bzw. ausgeschlossen behandelt werden soll. Umso
+# höher der Wert ist, umso unterschiedlicher sind die parallel
+# verarbeiteten Teilprobleme.Wenn nur ein Teilproblem erzeugt wird, ist die
+# Wahrscheinlichkeit immer Null.
+#
+# Mögliche Werte: float
+# parallelAenderWkt = 0.3
+
+# Für eine lokale Berechnung die Anzahl der Teilprobleme, die
+# pseudo--parallel berechnet werden sollen. In der aktuellen Version
+# werden die Teilprobleme aber sequentiell berechnet. Bei einer verteilten
+# Berechnung hat diese Angabe keine Bedeutung.
+#
+# Mögliche Werte: integer
+# lokaleTeilprobAnz = 1
+
+# Für eine verteilte Berechnung der Name des Rechners des Dispatchers.
+# Optional kann die Angabe auch einen Port enthalten. Bei einer lokalen
+# Berechnung hat diese Angabe keine Bedeutung.
+#
+# Mögliche Werte: String
+# dispatcher = localhost
+
+# Für eine verteilte Berechnung der Name des Rechners des
+# Class-File-Servers. Bei einer lokalen Berechnung hat diese Angabe keine
+# Bedeutung. Wenn bei einer verteilten Berechnung der Dispatcher oder einer
+# der Operatives auf einem anderen Rechner läuft, muß der richtige
+# Rechnername des Benutzerrechners angegeben werden (nicht nur
+# "localhost").
+#
+# Mögliche Werte: String
+# classServerName = localhost
+
+# Für eine verteilte Berechnung der Port des Class-File-Servers. Bei einer
+# lokalen Berechnung hat diese Angabe keine Bedeutung.
+#
+# Mögliche Werte: integer
+# classServerPort = 1855
+
+# Gibt an, in welchem Ausmaß die Teilmengen besonders Speicher-effizient
+# aber dadurch weniger Laufzeit-effizient verwaltet werden sollen. Der
+# Wert ist gleich oder größer Null (maximale Laufzeit-Effizienz) und
+# kleiner oder gleich Zwei (maximale Speicher-Effizienz).
+#
+# Mögliche Werte: 0, 1, 2
+# speicherEffizienz = 0
+
+# Die Anzahl der Iterationen des Gesamtverfahrens, also die Anzahl, wie
+# oft nacheinander ein bestes Konzept erzeugt werden soll. Der Wert muß
+# positiv sein.
+#
+# Mögliche Werte: integer
+# gesamtIterAnz = 1
+
+# Gibt an, ob nach Erzeugung einer korrekten und vollständigen Formel
+# zusätzlich zum jeweils optimalen Konzept weitere spezielle Konzepte
+# erzeugt und in die Auswahl der speziellen Konzepte aufgenommen werden
+# sollen.
+#
+# Mögliche Werte: ja, nein
+# zusatzKonzErz = nein
+
+# Die Anzahl der äußeren Iterationen, in denen korrekte oder vollständige
+# Konzepte aufgenommen werden und anschließend die mittlere Iteration
+# durchgeführt wird. Beim Wert Null wird iteriert, bis keine Verbesserung
+# mehr eintritt. Anderenfalls gibt der Absolutbetrag die Anzahl der
+# Iterationen an. Bei einem positiven Wert wird, wie beim Wert Null, in
+# jeder Iteration geprüft, ob nach einer Veränderung der Mengen  der
+# Konzepte tatsächlich eine Verbesserung stattgefunden hat.
+#
+# Mögliche Werte: integer
+# aeussereIterAnz = -1
+
+# Die Anzahl der mittleren Iterationen, in denen allgemeine Konzepte
+# aufgenommen werden und anschließend die innere Iteration durchgeführt
+# wird. Beim Wert Null wird iteriert, bis keine Verbesserung mehr
+# eintritt. Anderenfalls gibt der Absolutbetrag die Anzahl der
+# Iterationen an. Bei einem positiven Wert wird, wie beim Wert Null, in
+# jeder Iteration geprüft, ob nach einer Veränderung der Mengen der Konzepte
+# tatsächlich eine Verbesserung stattgefunden hat.
+#
+# Mögliche Werte: integer
+# mittlereIterAnz = -1
+
+# Die Anzahl der inneren Iterationen, in denen aus den allgemeinen
+# Konzepten korrekte oder vollständige Konzepte erzeugt werden. Beim Wert
+# Null wird iteriert, bis keine Verbesserung mehr eintritt. Anderenfalls
+# gibt der Absolutbetrag die Anzahl der Iterationen an. Bei einem
+# positiven Wert wird, wie beim Wert Null, in jeder Iteration geprüft, ob
+# nach einer Veränderung der Mengen  der Konzepte tatsächlich eine
+# Verbesserung stattgefunden hat.
+#
+# Mögliche Werte: integer
+# innereIterAnz = 0
+
+# Die minimale Anzahl der zu speichernden Teilmengen von allgemeinen
+# Konzepten zur Erzeugung spezieller Konzepte. Ein negativer Wert steht für
+# für eine unbeschränkte Anzahl und es findet keine Auswahl statt.
+#
+# Der zugehörige Wert für die Anzahl der Iterationen ist "erzSpezScpIterAnz".
+#
+# Mögliche Werte: integer
+# algSpezItmAnz = -1
+
+# Die minimale Anzahl der zu speichernden Teilmengen von speziellen, d.h.
+# von korrekten oder vollständigen, Konzepten zur Erzeugung von Formeln. Ein
+# negativer Wert steht für für eine unbeschränkte Anzahl und es findet keine
+# Auswahl statt.
+#
+# Die zugehörigen Werte für die Anzahl der Iterationen sind
+# "erzFormScpIterAnz" und "finFormScpIterAnz".
+#
+# Mögliche Werte: integer
+# spezFormItmAnz = -1
+
+# Die minimale Anzahl der zu speichernden Teilmengen zur Auswahl der
+# allgemeinen Konzepte bei der Optimierung eines speziellen Konzepts. Bei
+# einem negativen Wert werden alle Teilmengen aufgenommen und es findet
+# keine Auswahl statt. Beim Wert Null findet keine Optimierung statt.
+#
+# Der zugehörige Wert für die Anzahl der Iterationen ist "optSpezScpIterAnz".
+#
+# Mögliche Werte: integer
+# optSpezItmAnz = -1
+
+# Die minimale Anzahl der zu speichernden Teilmengen zur Auswahl der
+# speziellen Konzepte bei der Optimierung eines finalen Konzepts. Bei
+# einem negativen Wert werden alle Teilmengen aufgenommen und es findet
+# keine Auswahl statt. Beim Wert Null findet keine Optimierung statt.
+#
+# Der zugehörige Wert für die Anzahl der Iterationen ist "optFinScpIterAnz".
+#
+# Mögliche Werte: integer
+# optFinItmAnz = -1
+
+# Gibt die Anzahl der durchzuführenden Iterationen beim SCP-Verfahren bei
+# der Erzeugung eines speziellen Konzepts aus den allgemeinen Konzepten
+# an. Der Wert muß größer als Null sein.
+#
+# Der zugehörige Wert für die Anzahl der Teilmengen ist "algSpezItmAnz".
+#
+# Mögliche Werte: integer
+# erzSpezScpIterAnz = 15
+
+# Gibt die Anzahl der durchzuführenden Iterationen beim SCP-Verfahren bei
+# der Erzeugung einer Formel aus den speziellen, d.h. aus den korrekten
+# oder vollständigen, Konzepten an. Der Wert muß größer als Null sein.
+#
+# Der zugehörige Wert für die Anzahl der Teilmengen ist "spezFormItmAnz".
+#
+# Mögliche Werte: integer
+# erzFormScpIterAnz = 15
+
+# Gibt die Anzahl der durchzuführenden Iterationen beim SCP-Verfahren bei
+# der Optimierung eines speziellen Konzepts an. Der Wert muß größer als Null
+# sein.
+#
+# Der zugehörige Wert für die Anzahl der Teilmengen ist "optSpezItmAnz".
+#
+# Mögliche Werte: integer
+# optSpezScpIterAnz = 20
+
+# Gibt die Anzahl der durchzuführenden Iterationen beim SCP-Verfahren bei
+# der Erzeugung einer finalen Formel aus den speziellen, d.h. aus den
+# korrekten oder vollständigen, Konzepten an. Der Wert muß größer als Null
+# sein.
+#
+# Der zugehörige Wert für die Anzahl der Teilmengen ist "spezFormItmAnz".
+#
+# Mögliche Werte: integer
+# finFormScpIterAnz = 40
+
+# Gibt die Anzahl der durchzuführenden Iterationen beim SCP-Verfahren bei
+# der Optimierung einer finalen Formel an. Der Wert muß größer als Null sein.
+#
+# Der zugehörige Wert für die Anzahl der Teilmengen ist "optFinItmAnz".
+#
+# Mögliche Werte: integer
+# optFinScpIterAnz = 40
+
+# Gibt die Anzahl der Literale an, die maximal in einer Disjunktion bzw. in
+# einer Konjunktion enthalten sein sollen. Der Wert Null steht für eine
+# unbegrenzte Anzahl.
+#
+# Mögliche Werte: integer
+# maxLitAnz = 0
+
+# Gibt die initial geschätzte maximale Gesamt-Komplexität einer Formel an.
+# Dieser Wert ist nur bei Vorgabe der Anzahl an Literalen, die maximal in
+# einer Disjunktion bzw. Konjunktion enthalten sein sollen (Parameter
+# maxLitAnz), von Bedeutung.
+#
+# Mögliche Werte: float
+# initGesamtKomplex = 0.0
+

@@ -1,0 +1,33 @@
+@relation endspiel-sk-wk-wd
+
+@meta-attribute Farbe {weiss, schwarz}
+@meta-attribute Stein {Koenig, Dame}
+@meta-attribute Bereich {Linie, Reihe}
+@meta-attribute zahl  integer
+@meta-attribute Stein1 {Koenig, Dame}
+@meta-attribute Bereich1 {Linie, Reihe}
+@meta-attribute zahl1  integer
+
+@meta-data skr schwarz, Koenig, Reihe,1,Koenig,Reihe,1
+@meta-data wkl weiss, Dame, Linie ,2,Dame, Linie ,2
+@meta-data wkr weiss, Koenig, Linie,3 ,Koenig, Linie,3
+@meta-data wdl schwarz, Dame, Linie,4, Dame, Linie,4
+@meta-data test  schwarz, Koenig, Linie, 3 ,Koenig, Linie, 3
+
+
+
+@attribute skr real
+@attribute wkl numeric
+@attribute wkr integer
+@attribute wdl integer
+@attribute wdr integer
+@attribute class {true, false}
+
+
+@data
+ 3.5, 2, 5, 5, 4, true
+ 3, 2, 5, 3, 4, false
+
+
+
+

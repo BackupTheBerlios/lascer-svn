@@ -1,0 +1,26 @@
+                              Vorhandene Dateien
+
+
+coulomb.arff
+------------
+
+The examples with class value true are taken from the paper:
+"Data-Driven Discovery of Physical Laws" from Pat LANGLEY, 1981
+
+The examples with class value false have a 10 percent smaller or greater
+value for the attribute force.
+
+
+coulomb-r3.arff
+---------------
+
+Same examples as in file coulomb.arff, but all values for the attribute
+force are multiplied with a factor randomly chosen out of [0.97, 1.03].
+
+
+coulomb-r7.arff
+---------------
+
+Same examples as in file coulomb.arff, but all values for the attribute
+force are multiplied with a factor randomly chosen out of [0.93, 1.07].
+

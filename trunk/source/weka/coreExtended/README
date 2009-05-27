@@ -1,0 +1,19 @@
+             README for the files in sub-package coreExtended
+
+
+The files in this sub-package are part of Lascer (http://lascer.berlios.de/).
+They are derived from the files in the package weka version 3.2.3. and are
+also be distributed under the the GNU General Public License version 2. See
+the file LICENSE for details.
+
+The package weka can be found under http://sourceforge.net/projects/weka/
+
+The files were modified by Yang Zhou and Dietmar Lippold.
+
+You can run a test by:
+
+java -classpath weka-core-3-2-3.jar:. weka.coreExtended.Instances <arff-file>
+
+where weka-core-3-2-3.jar is an excerpt from the weka package version 3.2.3.
+It can also be the entire package.
+

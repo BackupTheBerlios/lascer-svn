@@ -1,0 +1,72 @@
+# Datei          : lascerParamEinfach
+# Letzte Änderung: 19. Dezember 2007 durch Dietmar Lippold
+# Autoren        : Dietmar Lippold, Copyright 2007
+#
+# Diese Datei gehört zum Projekt Lascer (http://lascer.berlios.de/).
+# Siehe Datei "license.txt" für Hinweise zur Lizenz.
+
+# Datei mit Konfigurations-Parametern, durch die in Abänderung der
+# Standard-Parameter als Funktionen nur Projektionen und als zugehörige
+# Prädikate nur Halb-Interveralle erzeugt werden.
+
+# Der Name der Parameter-Datei ist der Klasse FormelErzeugung oder Weka als
+# Kommandozeilen-Parameter der Option -configParam zu übergeben. Unabhängig
+# von den folgenden Parametern kann noch die Option -logging ohne weiteren
+# Wert in der Kommandozeile angegeben werden.
+
+# Die Standard-Werte und die möglichen Werte sind jeweils als Kommentar mit
+# angegeben.
+
+
+#
+# Parameter für die Erzeugung der Prädikate.
+#
+
+# Gibt an, ob bei Funktionen mit ganzzahligen Werten Prädikate nur zu
+# Halb-Intervallen erzeugt werden sollen. Falls nicht, werden Prädikate
+# zu Intervallen aller Arten erzeugt.
+#
+# Mögliche Werte: ja, nein
+# nurHalbIntItv = nein
+
+nurHalbIntItv = ja
+
+# Gibt an, ob bei Funktionen mit Fließkomma-Werten Prädikate nur zu
+# Halb-Intervallen erzeugt werden sollen. Falls nicht, werden Prädikate
+# zu Intervallen aller Arten erzeugt.
+#
+# Mögliche Werte: ja, nein
+# nurHalbRealItv = nein
+
+nurHalbRealItv = ja
+
+# Die maximale Anzahl der elementaren Funktionen in den zu erzeugenden
+# int-Funktionen.
+#
+# Mögliche Werte: integer
+# maxIntFunkKompl = 4
+
+maxIntFunkKompl = 1
+
+# Die maximale Anzahl der elementaren Funktionen in den zu erzeugenden
+# real-Funktionen.
+#
+# Mögliche Werte: integer
+# maxRealFunkKompl = 4
+
+maxRealFunkKompl = 1
+
+
+#
+# Parameter für die Erzeugung der Prädikate und der Konzept-Erzeuger.
+#
+
+# Der Standard-Wert.
+
+
+#
+# Parameter für die Erzeugung der Konzept-Erzeuger.
+#
+
+# Die Standard-Werte.
+

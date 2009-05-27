@@ -1,0 +1,61 @@
+                             Vorhandene Dateien
+
+
+mushroom-MZ.arff
+================
+
+Beschreibung
+------------
+
+Daten zur Einteilung von Pilzen in essbare (edible) und giftige (poisonous).
+Zu beiden Arten wurde jeweils eine Datei erzeugt, in der die entsprechende
+Art als true klassifiziert ist. Die Dateien mit M = v sind die vollständigen
+Dateien, in denen ein Attribut auch einen unbekannten Wert besitzt, in den
+Dateien mit M = r wurde dieses Attribut entfernt.
+
+
+Erzeugung
+---------
+
+Datei mushroom.arff aus dem Paket
+http://prdownloads.sourceforge.net/weka/datasets-UCI.jar entnehmen.
+
+Am Anfang der Datei mushroom.arff folgendes einfügen:
+>>>
+% Grundlage der Daten: Datei mushroom.arff aus dem UCI repository von
+% http://www.cs.waikato.ac.nz/ml/weka/index_datasets.html
+% Download: http://prdownloads.sourceforge.net/weka/datasets-UCI.jar
+
+<<<
+
+Die Quotes von den Attributnamen und Attributwerten entfernen.
+
+cat mushroom.arff | ./attribAenderung.pl > mushroom-vZ.arff
+  wobei in attribAenderung.pl das Attribut "class" gegen den Attributwert
+  Z verglichen wird und das vorhandene "class" entfernt wird.
+
+cat mushroom.arff | ./attribAenderung.pl > mushroom-rZ.arff
+  wobei in attribAenderung.pl das Attribut "class" gegen den Attributwert
+  Z verglichen wird und das vorhandene "class" und das Attribut "stalk-root"
+  entfernt wird.
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+
+% true, wenn "class" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwertes Z zu ersetzen ist.
+
+
+Daten
+-----
+
+   MZ | # true | # false | Anz. gesamt
+  -------------------------------------
+   ve |  4208  |   3916  |     8124
+   vp |  3916  |   4208  |     8124
+   re |  4208  |   3916  |     8124
+   rp |  3916  |   4208  |     8124
+
+Daten ermittelt mit inkonsAnzahl.pl
+

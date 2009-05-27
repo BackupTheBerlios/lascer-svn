@@ -1,0 +1,49 @@
+# Datei          : lascerParamSpezFormelErz
+# Letzte Änderung: 18. Dezember 2007 durch Dietmar Lippold
+# Autoren        : Dietmar Lippold, Copyright 2007
+#
+# Diese Datei gehört zum Projekt Lascer (http://lascer.berlios.de/).
+# Siehe Datei "license.txt" für Hinweise zur Lizenz.
+
+# Datei mit den speziellen Konfigurations-Parametern für die Klasse
+# FormelErzeugung. Unabhängig von den anderen Parametern können noch die
+# Optionen -logging und -help ohne weiteren Wert in der Kommandozeile
+# angegeben werden.
+
+
+#
+# Parameter zur Steuerung der Erzeugung der Konzepte.
+#
+
+# Gibt an, welche Art von Formeln erzeugt und ausgegeben werden sollen. Bei
+# "dis" wird nur die disjunktive (eine korrekte) und bei "kon" nur die
+# konjunktive (eine vollständige) erzeugt und ausgegeben. Bei "beste" und
+# bei "beide" werden beide Formeln erzeugt. Bei "beste" wird aber nur die
+# bessere von beiden ausgegeben, während bei "beide" beide Formeln
+# ausgegeben werden.
+#
+# Mögliche Werte: dis, kon, beste, beide
+# ausgabeFormelArt = beide
+
+# Gibt an, für die Beispiele welcher Klasse eine Formel erzeugt und
+# ausgegeben werden soll. Bei "pos" wird eine Formel für die positiven
+# Beispiele erzeugt und ausgegeben, bei "neg" für die negativen Beispiele
+# und bei "beide" werden für die Beispiele beider Klassen Formeln erzeugt
+# und ausgegeben.
+#
+# Mögliche Werte: pos, neg, beide
+# ausgabeFormelKlasse = pos
+
+# Gibt an, ob anstatt einer Formel das effizienteste einzelne Konzept
+# erzeugt und ausgegeben werden soll und für das Beispiel welcher Klasse
+# dies gegebenenfalls zutreffen muß bzw. nicht zutreffen darf. Bei "nein"
+# wird kein einzelnes Konzept erzeugt, bei "pos" muß das Konzept für das
+# letzte positive Beispiel zutreffen, bei "neg" darf es nicht für das letzte
+# negative Beispiel zutreffen und bei "keine" gibt es kein Beispiel, für das
+# das Konzept zutreffen muß bzw. nicht zutreffen darf.
+# Der Parameter "gesamtIterAnz" hat bei Verwendung dieses Parameters keine
+# Bedeutung.
+#
+# Mögliche Werte: nein, pos, neg, keine
+# einzelBspKlasse = nein
+

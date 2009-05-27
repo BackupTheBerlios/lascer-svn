@@ -1,0 +1,107 @@
+                              Vorhandene Dateien
+
+
+kqk-btm-drawn.arff
+==================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißer Dame und schwarzem König mit Schwarz am
+Zug (mit vollständiger Definition der Korrektheit). Illegale Stellungen sind
+nicht enthalten. Die Klassifikation gibt an, ob die Stellung remis ist.
+
+Erzeugung
+---------
+
+fpc espanalyse3.pp
+
+./espanalyse3
+  Eingaben:
+   + wD
+   + (U)ntersuchung
+   + (v)ollstaendige
+   + (S)eichern
+   + Datei: KQK.lpd
+
+java egtb/Conversion -black -legal -nocaptures -noconversions KQK.lpd
+
+cat KQK_lippold.arff | ./isDrawn.pl > kqk-btm-drawn.arff
+
+In kqk-btm-drawn.arff folgende Zeile am Anfang einfügen:
+% for all positions : black to move
+
+Vor dem Attribut "draw" folgende Zeile einfügen:
+% true, if the position is drawn, otherwise false
+
+Die Attribut-Zeile selbst ist zu ersetzen durch:
+@attribute class {false, true}
+
+Die letzen beiden Kommentar-Zeile entfernen.
+
+Daten
+-----
+
+Anz. true :  3661
+Anz. false: 31307
+Gesamtanz.: 34968
+
+
+kqk-btm-N.arff mit 0 <= N <= 18
+==============
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißer Dame und schwarzem König mit Schwarz am
+Zug (mit vollständiger Definition der Korrektheit), wobei nur Stellungen
+enthalten sind, die theoretisch gewonnen sind und bei denen ein Gewinn
+mindestens N Halbzüge erfordert. Illegale Stellungen sind nicht enthalten.
+Die Klassifikation gibt an, ob die Stellung für Weiß theoretisch in genau
+N Halbzügen gewonnen ist. Bei N = 0 sind also z.B. die Matt-Stellungen unter
+allen Stellungen klassifiziert.
+
+Erzeugung
+---------
+
+fpc espanalyse3.pp
+
+./espanalyse3
+  Eingaben:
+   + wD
+   + wD
+   + (U)ntersuchung
+   + (v)ollstaendige
+   + (S)eichern
+   + Datei: KQK.lpd
+
+java egtb/Conversion -black -legal -nodraws -nocaptures -noconversions -max-N KQK.lpd
+  wobei N die obige Nummer ist
+
+cat KQK_lippold.arff | ./hasPly.pl > kqk-btm-N.arff
+  wobei in hasPly.pl für $ply und im Dateinamen der Wert -N anzugeben ist
+  (N sollte im Dateinamen aus zwei Ziffern bestehen).
+
+In kqk-btm-N.arff folgende Zeile am Anfang einfügen:
+% for all positions : black to move
+
+In kqk-btm-N.arff den Kommentar unmittelbar vor dem Attribut class durch
+folgenden ersetzt:
+% true, if the number of plies to end the game is N, otherwise false
+
+Daten
+-----
+
+    N | Anz. true | Anz. false | Anz. gesamt
+  -------------------------------------------------
+    0 |      62   |    31245   |    31307
+    2 |     237   |    31008   |    31245
+    4 |     458   |    30550   |    31008
+    6 |    1201   |    29349   |    30550
+    8 |    2193   |    27156   |    29349
+   10 |    3779   |    23377   |    27156
+   12 |    6130   |    17247   |    23377
+   14 |    8452   |     8795   |    17247
+   16 |    6974   |     1821   |     8795
+   18 |    1812   |        9   |     1821
+

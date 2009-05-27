@@ -1,0 +1,49 @@
+                              Vorhandene Dateien
+
+
+contact-lenses-ZZZZ.arff
+========================
+
+Beschreibung
+------------
+
+Daten zur Art der geeigneten Kontaktlinsen für Personen. Die Daten beschreiben
+ein vereinfachtes Modell vollständig und fehlerfrei. Die Klassifikation
+erfolgt jeweils danach, ob eine bestimmte Art von Kontaktlinsen geeignet ist.
+
+
+Erzeugung
+---------
+
+Datei contact-lenses.arff dem Verzeichnis data von Weka entnehmen.
+
+Am Anfang der Datei contact-lenses.arff folgendes einfügen:
+>>>
+% Grundlage der Daten: Datei contact-lenses.arff aus dem Verzeichni "data"
+% von weka Version 3.4.7 von http://sourceforge.net/projects/weka/
+
+<<<
+
+cat contact-lenses.arff | ./attribAenderung.pl > contact-lenses-ZZZZ.arff
+  wobei in attribAenderung.pl class gegen den Arrtibutwert ZZZZ zu
+  vergleichen ist.
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+
+% true, wenn "contact-lenses" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwertes ZZZZ zu ersetzen ist.
+
+
+Daten
+-----
+
+   ZZZZ | # true | # false | Anz. gesamt
+  --------------------------------------
+   hard |     4  |     20  |      24
+   soft |     5  |     19  |      24
+   none |    15  |      9  |      24
+
+Daten ermittelt mit inkonsAnzahl.pl
+

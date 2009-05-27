@@ -1,0 +1,223 @@
+                          Zu bearbeitende Punkte
+
+
+Kurzfristig
+===========
+
+lascer
+------
+
+ * Prüfen, ob dem Konstruktor KonzeptTeilmenge anstatt groesseGesamtmenge
+   ein BitMathIntSet des zugrundeliegenden Konzepts mit den aufzunehmenden
+   Elementen übergeben werden kann. Dadurch bräuchte kein neues BitMathIntSet
+   erzeugt zu werden. Die Methode indicesAufnehmen(BitMathIntSet) der Klasse
+   IndexTeilmenge könnte dann evtl. entfernt werden.
+
+ * Eine neue Option aufnehmen, ob bei der Optimierung eines speziellen
+   Konzepts nur die vorhandenen allgemeinen Konzepte verwendet werden sollen
+   und allgemeine Konzepte nicht neu erzeugt werden sollen. Für die
+   Optimierung eines finalen Konzepts könnte eine entsprechende Option
+   aufgenommen werden.
+
+ * In der Klasse SofortigeAuswahl könnten bei der Aufnahme einer neuen
+   Teilmenge vorhandene Teilmengen entfernt werden, die echt schlechter sind
+   als die neue Teilmenge. Es wäre zu prüfen, ob der dadurch verursachte
+   Aufwand durch bessere Ergebnisse gerechtfertigt wird.
+
+ * Statistik einbauen
+
+
+Mittelfristig
+=============
+
+Algemein
+--------
+
+ * Die Methoden clone() auf die Standard-Weise implementieren.
+
+mengenUeberdeckung
+------------------
+
+ * Eine Klasse ergänzen, die das Interface UeberdeckungsOptimierung
+   implementiert und deren Konstruktor eine Liste von Implementierungen
+   dieses Interfaces übergeben wird, mit denen dann nacheinander unabhängig
+   voneinander eine Lösung erzeugt wird. Die beste der Lösungen wird
+   zurückgeliefert.
+
+ * Eine Besten-Suche ergänzen.
+
+ * Eine Suche mit look-ahead ergänzen, bei der also zu einer begrenzten
+   Anzahl von Kandidaten eine Vorausschau begrenzter Tiefe vorgenommen wird.
+
+ * ItmFamilie um eine Methode zuletztItmEntfernt ergänzen, die angibt ob
+   aus der Familie zuletzt eine Teilmenge entfernt oder eine hinzugenommen
+   wurde, sowie um eine Methode zuletztBetroffeneItm, die eine Menge der
+   Teilmengen liefert, die von der letzten Hinzunahme oder Entfernung einer
+   Teilmenge in der Weise betroffen sind, daß sie mindestens ein Element
+   mit dieser Teilmenge gemeinsam haben. Wenn die Veraltung der Teilmengen
+   durch FesteTeilmengenVerwaltung erfolgt, liefert zuletztBetroffeneItm auch
+   potentielle Teilmengen, also solche, die nicht in der Familie enthalten
+   sind. Zur effizienten Implementierung speichert FesteTeilmengenVerwaltung
+   zu jedem Index eine Liste der diesen Index enthaltenden Teilmengen
+   (bei bewußter Inkaufnahme des großen Speicherbedarfs). Damit kann dann
+   auch die Methode anzAlleineUeberdeckt effizient realisiert werden, indem
+   die Werte immer aktuell gehalten werden.
+   Mit den neuen Methoden kann die Chvatal-Bewertung sowie die Klasse
+   LocalSearchOptimization Laufzeit-effizient implementiert werden.
+
+ * Matching-Optimierung ergänzen.
+
+ * Evtl. IndexTeilmenge und DoppelIndexTeilmenge zu Interfaces machen. Dann
+   müssen jedoch Methoden und Konstruktoren der Klassen, die als Argument 
+   eine IndexTeilmenge bzw. DoppelIndexTeilmenge erhalten, geändert werden.
+
+ * Zur Berücksichtigung steigender Kosten pro Kosten-Index: Für oder in der
+   Klasse QuotDoppelItmFamilie die Kosten der Kosten-Indices mit einem Wert
+   1.x potenzieren. Alternativ in der Klasse den Wert der Konsten-Indices der
+   Familie (den Nenner) mit 1.x potenzieren.
+
+ * Zur Anpassung der Kosten einer Teilmenge selbst an die Kosten der
+   überdeckten Kosten-Indices: In der oder für die Klasse SumDoppelItmFamilie
+   die Kosten der Kosten-Indices mit einem Faktor multiplizieren.
+
+ * Andere Werte für Konstanten testen, insb. in mengenUeberdeckung.heuristiken
+   (z.B. DEFAULT_FREQUENCY_EXPONENT in
+    mengenUeberdeckung.heuristiken.costs.Konstanten und in
+    mengenUeberdeckung.heuristiken.utility.Konstanten)
+
+ * Insbesondere für nichtlineare-SCP als Alternative in BestRatingSelection
+   eine Klasse realisieren, in der die Anzahl der Teilmengen-Kandidaten, aus
+   denen eine Teilmenge (mit gleicher Wahrscheinlichkeit) ausgewählt wird,
+   mit steigender Nummer der Iteration steigt. Wenn "n" die Nummer der
+   Iteration und "at" die Anzahl der Teilmengen in der besten Lösung ist,
+   könnte die Anzahl der Kandidaten z.B. at-te Wurzel aus n sein, wobei
+   der Nachkommaanteil die Wahrscheinlichkeit der Aufnahme eines weiteren
+   Kandidaten angeben würde.
+
+ * Als weitere Alternative zu BestRatingSelection insbesondere für
+   nichtlineare-SCP könnte eine Teilmenge mit einer Wahrscheinlichkeit
+   ausgewählt werden, die von ihrer Bewertung abhängt. Mit zunehmender
+   Nummer der Iteration könnte die Wahrscheinlichkeitsverteilung flacher
+   werden.
+
+ * Evtl. in FesteTeilmengenVerwaltung zu jeder potentiellen Teilmenge die
+   Indices speichern, die in keiner (falls die Teilmenge nicht in der Familie
+   enthalten ist) bzw. keiner anderen (falls die Teilmenge in der Familie
+   enthalten ist) Teilmenge der Familie enthalten sind. Dazu ein spezielles
+   HashSet für int-Werte verwenden. Mit diesen Daten können die Methoden
+   neuNichtNotwendigeTeilmengen und anzAlleineUeberdeckt aus ItmFamilie
+   effizient realisiert werden.
+
+lascer
+------
+
+ * Es ermöglichen, die Art der Prädikate (z.B. die Art der Intervalle bei
+   Funktions-Prädikaten) und die Art der speziellen Konzepte (der alleinigen
+   und der zusammengesetzen), die in der zu erzeugenden Formel vorkommen
+   dürfen, vorzugeben.
+   Für die alleinigen Konzepte könnte ein Test in den Methoden
+   erzPraedKorrKonzepte und erzPraedVollKonzepte der Klasse KonzeptErzeugung
+   aufgenommen werden, für die zusammengesetzen Konzepte könnten die Methoden
+   istKompatibelMit und istNotwendigFuer in der Klasse IndexTeilmenge
+   aufgenommen und in der Klasse QuotDoppelItmFamilie verwendet werden.
+
+ * Prüfen: Nach der Erzeugung einer korrekten und vollständigen Formel
+   alle Teilformeln (algemeinen Konzepte)
+
+    + der erzeugten Formel
+    + oder aller zuletzt vorhandenen speziellen Konzepte
+
+   als Grundlage für die Erzeugung einer neuen Formel verwenden.
+
+ * Nach der Erzeugung einer finalen Formel bilden alle Paare aus zwei
+   Literalen, die gemeinsam in einer Konjunktion oder Disjunktion der
+   finale Formeln vorkommen, ein neues Konzept. Diese Konzepte werden für
+   einen neuen Durchlauf zu den Konzeptmengen hinzugefügt.
+   Klären: Welche Komplexität sollen diese neuen Konzepte besitzen?
+   Möglichkeit: Neue Komplexität = Eigentliche Komplexität dividiert durch
+                die Anzahl des Vorkommens dieser Kombination in der finalen
+                Formel.
+
+ * Das Verfahren zur Berechnung der Güte der Überdeckung und des
+   Ausschlusses von Indices (Methoden posUeberdeckGuete in Klasse
+   KorrekteKonzepte und negAusschlussGuete in Klasse
+   VollstaendigeKonzepte) optimieren.
+
+ * Um die Unstetigkeit des SCP-Verfahrens bei Verwendung von ExistentCosts
+   abzuschwächen (verursacht dadurch, daß die Überdeckung eines
+   Kosten-Indexes nicht mehr zählt, wenn er ein Mal überdeckt wurde),
+   könnten die Kosten in Abhängigkeit von der Anzahl der insgesamt
+   überdeckten Kostenindices nach Hinzunahme einer Teilmenge (uKI) (d.h.
+   der Anzahl der der Kostenindices der Teilmenge bzw. der Summe aller
+   Teilmengen der Familie) und der noch nicht überdeckten Kostenindices
+   nach Hinzunahme der Teilmenge (nKI) erhöht werden. Dazu kann man folgenden
+   Wert berechnen:
+
+     KostenSummand = kosten * (uKI / gG) * (nKI / gG)
+
+   Dabei ist gG die Größe der Gesamtmenge. Für kosten und für die Verwendung
+   von KostenSummand scheinen zwei Möglichkeiten sinnvoll:
+
+    + kosten sind die minimalen Kosten eines Kostenindexes und der Wert wird
+      in ExistentCosts ermittelt und addiert.
+
+    + kosten sind die absoluten Kosten einer bzw. der Teilmengen und der
+      Wert wird in QuotDoppelItmFamilie ermittelt und zum Zähler addiert.
+
+   Ergänzend könnte man auch einen größeren Wert für die Konstante
+   M_RCV_ZERO_PROP im Package iteratedGreedyCovering verwenden.
+
+ * In lascer eine Funktion zum Vergleich von zwei allgemeinen Konzepten unter
+   Bezug auf eine vorhandene partielle Überdeckung realisieren (was derzeit
+   durch die Klasse QuotDoppelItmFamilie aus mengenUeberdeckung realisiert
+   wird). Diese könnte verwendet werden, um die Optimierung eines speziellen
+   Konzepts in Methode KonzeptErzeugung.optimiertesSpezKonzept zu iterieren.   
+   Dann evtl. auch eine Unterklasse von DoppelItmFamilie ergänzen, der eine
+   Funktion zum Vergleich zweier Teilmengen implementieren.
+
+ * In der Klasse lascer.konzepte.KonzeptErzeugung könnten in der Methode
+   seqErzPraedKorrKonzepte und seqErzPraedVollKonzepte die Indices der Fehler
+   in einer bestimmten Reihenfolge durchlaufen werden, z.B.aufsteigend oder
+   absteigend nach der Anzahl der Prädikate bzw. allgemeinen Konzepte, die
+   einen Index enthalten bzw. ausschließen.
+
+ * Ordinale Attribute ergänzen
+
+ * Meta-Attribute aufnehmen
+
+ * Evtl. int-Funktionen zu long-Funktionen machen
+
+ * Erzeugung von Hyperebenen-Prädikaten mit gerundeten Werten und daher
+   geringerer Komplexität
+
+ * Andere Versionen der Methoden KorrekteKonzepte.posUeberdeckGuete und
+   VollstaendigeKonzepte.negAusschlussGuete (wenn GUETE_EINHEITLICH false
+   ist) entwickeln und testen.
+
+
+Langfristig
+===========
+
+mengenUeberdeckung
+------------------
+
+ * Eine Version von IndexTeilmenge erstellen, in der die Indices mittels
+   Huffman-Codierung gespeichert sind.
+
+lascer
+------
+
+ * Ein Programm erstellen, das zu einem Problem eine arff-Datei liefert,
+   in der die durch konstruktive Induktion erzeugten Prädikate enthalten
+   sind.
+
+ * Idee: Ableitung von Hornklauseln als spezielle Konzepte. Diese können
+   entweder (wie bei Prolog) vollständig aber nicht unbedingt korrekt sein
+   (d.h. die Regel ist auf jedes positive Beispiel anwendbar) oder korrekt
+   aber nicht unbedingt vollständig sein (d.h. wenn die Regel anwendbar
+   ist, handelt es sich um ein positives Beispiel).
+   Das positive Literal der Hornklausel kann dabei jeweils von spezieller
+   Art sein, z.B. den schwarzen König oder die weiße Dame betreffen.
+
+ * Evtl. Gewichtung von Instanzen ermöglichen.
+

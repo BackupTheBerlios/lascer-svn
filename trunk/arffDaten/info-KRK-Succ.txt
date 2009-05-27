@@ -1,0 +1,140 @@
+                             Vorhandene Dateien
+
+
+krk-wtm-perf.arff
+=================
+
+Beschreibung
+------------
+
+Endspiel mit weiﬂem Kˆnig, weiﬂem Turm und schwarzem Kˆnig mit Weiﬂ am Zug
+(mit vollst‰ndiger Definition der Korrektheit). Es ist jeweils die
+Ausgangsstellung und die Zielstellung angegeben. Es sind als
+Ausgangsstellungen nur solche enthalten, die theoretisch gewonnen sind.
+Illegale Stellungen sind nicht enthalten. Die Klassifikation gibt an, ob der
+Zug f¸r Weiﬂ perfekt ist, also schnellst mˆglich zum Gewinn f¸hrt.
+
+Erzeugung
+---------
+
+fpc espanalyse3.pp
+
+./espanalyse3
+  Eingaben:
+   + wT
+   + (U)ntersuchung
+   + (v)ollstaendige
+   + (S)eichern
+   + Datei: KRK.lpd
+
+java egtb/Conversion -succ -white -legal -nodraws -nocaptures -noconversions KRK.lpd
+
+cat KRK_lippold_succ.arff | ./moveIsPerfect.pl > krk-wtm-perf.arff
+
+In krk-wtm-perf.arff folgende Zeile am Anfang einf¸gen:
+% for all positions : white to move
+
+Der Kommentar vor dem Attribut moveIsPerfect ist zu ersetzen durch:
+% true, if it is a optimal move, otherwise false
+
+Den Namen des Attributs ersetzen durch "class".
+
+Daten
+-----
+
+Anz. true :  57711
+Anz. false: 470378
+Gesamtanz.: 528089
+
+
+krk-btm-lr.arff mit lr aus {a1, b1, c1, d1, b2, c2, d2, c3, d3, d4}
+===============
+
+Beschreibung
+------------
+
+Endspiel mit weiﬂem Kˆnig, weiﬂem Turm und schwarzem Kˆnig mit Weiﬂ am Zug
+(mit vollst‰ndiger Definition der Korrektheit). Es ist jeweils die
+Ausgangsstellung und die Zielstellung angegeben. Es sind als
+Ausgangsstellungen nur solche enthalten, die theoretisch gewonnen sind und
+bei denen der schwarze Kˆnig auf dem Feld lr steht. Illegale Stellungen sind
+nicht enthalten. Die Klassifikation gibt an, ob der Zug f¸r Weiﬂ perfekt
+ist, also schnellst mˆglich zum Gewinn f¸hrt.
+
+Erzeugung
+---------
+
+Wie bei Datei krk-wtm-perf.arff und anschlieﬂend:
+
+cat krk-wtm-perf.arff | ./stellungsfilter.pl > krk-wtm-perf-lr.arff
+  wobei lr die obige Kennung ist und als Test in stellungsfilter.pl zu
+  verwenden ist:     if (($blackKingFile == L) && ($blackKingRank == r))
+  wobei L die Nummer der Linie l in der Kennung lr ist.
+
+Daten
+-----
+
+  lr | Anz. true | Anz. false | Anz. gesamt
+ -------------------------------------------
+  a1 |     5870  |     51540  |      57410
+  b1 |     5533  |     49756  |      55289
+  c1 |     5109  |     49641  |      54750
+  d1 |     4862  |     49856  |      54718
+  b2 |     5210  |     46924  |      52134
+  c2 |     5322  |     46000  |      51322
+  d2 |     5557  |     45739  |      51296
+  c3 |     5488  |     44928  |      50416
+  d3 |     6201  |     44189  |      50390
+  d4 |     8559  |     41805  |      50364
+
+
+krk-btm-a.arff mit a aus {2, 3, 4, 5, 6, g}
+===============
+
+Beschreibung
+------------
+
+Endspiel mit weiﬂem Kˆnig, weiﬂem Turm und schwarzem Kˆnig mit Weiﬂ am Zug
+(mit vollst‰ndiger Definition der Korrektheit). Es ist jeweils die
+Ausgangsstellung und die Zielstellung angegeben. Es sind als
+Ausgangsstellungen nur solche enthalten, die theoretisch gewonnen sind und
+bei denen der Manhattan-Abstand der Felder von schwarzem und vom weiﬂen Kˆnig
+der Wert a ist (g steht dabei f¸r einen Wert grˆﬂer als 6). Illegale
+Stellungen sind nicht enthalten. Die Klassifikation gibt an, ob der Zug f¸r
+Weiﬂ perfekt ist, also schnellst mˆglich zum Gewinn f¸hrt.
+
+Erzeugung
+---------
+
+Wie bei Datei krk-wtm-perf.arff und anschlieﬂend:
+
+cat krk-wtm-perf.arff | ./stellungsfilter.pl > krk-wtm-perf-a.arff
+  wobei a die obige Kennung ist und als Test in stellungsfilter.pl zu
+  verwenden ist:
+    my $kingFileDiff = abs($blackKingFile - $whiteKingFile);
+    my $kingRankDiff = abs($blackKingRank - $whiteKingRank);
+    if ($kingFileDiff + $kingRankDiff == a)
+  bzw. f¸r a = g:
+    if ($kingFileDiff + $kingRankDiff > 6)
+
+Daten
+-----
+
+  a | Anz. true | Anz. false | Anz. gesamt
+ ------------------------------------------
+  2 |     2862  |     23988  |     26850
+  3 |     6976  |     64893  |     71869
+  4 |     8627  |     74909  |     83536
+  5 |     9070  |     75590  |     84660
+  6 |     9299  |     68546  |     77845
+  g |    20877  |    162452  |    183329
+
+
+krk-btm-lr-grp.arff mit lr aus {a1, b1, c1, d1, b2, c2, d2, c3, d3, d4}
+===================
+
+Gleiche Dateien wie krk-btm-lr.arff, nur daﬂ die Stellungen um eine
+Gruppenangabe erg‰nzt wurden. Positiven Beispielen ist ihre Ausgangsstellung
+als Gruppe zugewiesen, negativen Beispielen der Wert zum Ignorieren der
+Gruppe.
+

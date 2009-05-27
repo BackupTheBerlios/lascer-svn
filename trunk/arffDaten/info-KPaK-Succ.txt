@@ -1,0 +1,156 @@
+                             Vorhandene Dateien
+
+
+kpak-wtm-good.arff
+==================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißem a-Bauern und schwarzem König mit Weiß am
+Zug (mit vollständiger Definition der Korrektheit und schnellstem Gewinn,
+mit Doppelschritt des Bauern). Es ist jeweils die Ausgangsstellung und die
+Zielstellung angegeben. Es sind als Ausgangsstellungen nur solche enthalten,
+die theoretisch gewonnen sind.  Illegale Stellungen sind nicht enthalten.
+Die Klassifikation gibt an, ob der Zug für Weiß gut, d.h. werterhaltend ist.
+
+Erzeugung
+---------
+
+fpc espanalyse3.pp
+
+./espanalyse3
+  Eingaben:
+   + wD
+   + (D)atenerzeugung
+   + Datei: KQK.lpd
+
+./espanalyse3
+  Eingaben:
+   + wa
+   + (U)ntersuchung
+   + (v)ollstaendige
+   + (G)ewinn
+   + KQK.lpd
+   + (S)eichern
+   + KPK.lpd
+
+java egtb/Conversion -succ -white -legal -nodraws -nocaptures -noconversions KPK.lpd
+
+cat KPK_lippold_succ.arff | ./spiegel-stell.pl > kpak-wtm.arff
+  wobei in spiegel-stell.pl der Variablen $steinanz der Wert 6 zugewiesen
+  sein muß.
+
+cat kpak-wtm.arff | ./moveIsGood.pl > kpak-wtm-good.arff
+
+In kpak-wtm-good.arff folgende Zeile am Anfang einfügen:
+% for all positions : white to move
+
+Der Kommentar vor dem Attribut moveIsGood ist zu ersetzen durch:
+% true, if the move doesn't change the outcome, but it's not optimal,
+% otherwise false
+
+Den Namen des Attributs ersetzen durch "class".
+
+Daten
+-----
+
+Anz. true :  91414
+Anz. false:  17345
+Gesamtanz.: 108759
+
+
+kpak-wtm-perf.arff
+==================
+
+Beschreibung
+------------
+
+Gleiches Endspiel wie bei der Datei kpak-wtm-good.arff, nur daß die
+Klassifikation angibt, ob der Zug für Weiß perfekt ist, also schnellst
+möglich zum Gewinn führt.
+
+Erzeugung
+---------
+
+Wie bei Datei kpak-wtm-good.arff, nur daß die letzte Zeile lautet:
+cat kpak-wtm.arff | ./moveIsPerfect.pl > kpak-wtm-perf.arff
+
+In kpak-wtm-perf.arff folgende Zeile am Anfang einfügen:
+% for all positions : white to move
+
+Der Kommentar vor dem Attribut moveIsPerfect ist zu ersetzen durch:
+% true, if it is a optimal move, otherwise false
+
+Die Attribut-Zeile selbst ist zu ersetzen durch:
+@attribute class {false, true}
+
+Daten
+-----
+
+Anz. true :  17088
+Anz. false:  91671
+Gesamtanz.: 108759
+
+
+kpak-wtm-good-aN.arff mit 2 <= N <= 7
+=====================
+
+Beschreibung
+------------
+
+Gleiches Endspiel wie bei der Datei kpak-wtm-good.arff, nur daß in der
+Datei nur Stellungen enthalten sind, in denen der weiße Bauer auf aN
+(mit 2 <= N <= 7) steht.
+
+Erzeugung
+---------
+
+Wie bei Datei kpak-wtm-good.arff und anschließend:
+cat kpak-wtm-good.arff | ./stellungsfilter.pl > kpak-wtm-good-aN.arff
+  wobei N die obige Nummer ist und als Test in stellungsfilter.pl zu
+  verwenden ist:     if ($whitePieceRank == N)
+
+Daten
+-----
+
+    N | Anz. true | Anz. false | Anz. gesamt
+  -------------------------------------------------
+    2 |   10669   |     4332   |    15001
+    3 |   10029   |     3515   |    13544
+    4 |   13309   |     2995   |    16304
+    5 |   16403   |     2633   |    19036
+    6 |   19285   |     2194   |    21479
+    7 |   21719   |     1676   |    23395
+
+
+kpak-wtm-perf-aN.arff mit 2 <= N <= 7
+=====================
+
+Beschreibung
+------------
+
+Gleiches Endspiel wie bei der Datei kpak-wtm-perf.arff, nur daß in der
+Datei nur Stellungen enthalten sind, in denen der weiße Bauer auf aN
+(mit 2 <= N <= 7) steht.
+
+Erzeugung
+---------
+
+Wie bei Datei kpak-wtm-perf.arff und anschließend:
+cat kpak-wtm-perf.arff | ./stellungsfilter.pl > kpak-wtm-perf-aN.arff
+  wobei N die obige Nummer ist und als Test in stellungsfilter.pl zu
+  verwenden ist:     if ($whitePieceRank == N)
+
+Daten
+-----
+
+    N | Anz. true | Anz. false | Anz. gesamt
+  -------------------------------------------------
+    2 |    2332   |    12669   |    15001
+    3 |    2368   |    11176   |    13544
+    4 |    2709   |    13595   |    16304
+    5 |    3039   |    15997   |    19036
+    6 |    3264   |    18215   |    21479
+    7 |    3376   |    20019   |    23395
+

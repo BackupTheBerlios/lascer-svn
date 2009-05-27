@@ -1,0 +1,136 @@
+# Datei          : lascerParamBs
+# Letzte Änderung: 04. September 2006 durch Dietmar Lippold
+# Autoren        : Dietmar Lippold, Copyright 2006
+#
+# Diese Datei gehört zum Projekt Lascer (http://lascer.berlios.de/).
+# Siehe Datei "license.txt" für Hinweise zur Lizenz.
+
+# Datei mit Konfigurations-Parametern zur beschränkten Speicher-Nutzung für
+# Lascer. Die Parameter dieser Datei veranlassen die Speicherung einer
+# beschränkten Anzahl von Konzepten und verwenden diese Anzahl auch für die
+# Optimierung.
+
+# Der Name der Parameter-Datei ist der Klasse FormelErzeugung oder Weka als
+# Kommandozeilen-Parameter der Option -configParam zu übergeben. Unabhängig
+# von den folgenden Parametern kann noch die Option -logging ohne weiteren
+# Wert in der Kommandozeile angegeben werden.
+
+# Die Standard-Werte und die möglichen Werte sind jeweils als Kommentar mit
+# angegeben.
+
+
+#
+# Parameter für die Erzeugung der Prädikate.
+#
+
+# Die Standard-Werte.
+
+
+#
+# Parameter für die Erzeugung der Prädikate und der Konzept-Erzeuger.
+#
+
+# Der Standard-Wert.
+
+
+#
+# Parameter für die Erzeugung der Konzept-Erzeuger.
+#
+
+# Gibt an, ob nach Erzeugung einer korrekten und vollständigen Formel
+# zusätzlich zum jeweils optimalen Konzept weitere spezielle Konzepte
+# erzeugt und in die Auswahl der speziellen Konzepte aufgenommen werden
+# sollen.
+#
+# Mögliche Werte: ja, nein
+# zusatzKonzErz = nein
+
+zusatzKonzErz = ja
+
+# Die Anzahl der äußeren Iterationen, in denen korrekte oder vollständige
+# Konzepte aufgenommen werden und anschließend die mittlere Iteration
+# durchgeführt wird. Beim Wert Null wird iteriert, bis keine Verbesserung
+# mehr eintritt. Anderenfalls gibt der Absolutbetrag die Anzahl der
+# Iterationen an. Bei einem positiven Wert wird, wie beim Wert Null, in
+# jeder Iteration geprüft, ob nach einer Veränderung der Mengen
+# tatsächlich eine Verbesserung stattgefunden hat.
+#
+# Mögliche Werte: integer
+# aeussereIterAnz = -1
+
+aeussereIterAnz = 0
+
+# Die Anzahl der mittleren Iterationen, in denen allgemeine Konzepte
+# aufgenommen werden und anschließend die innere Iteration durchgeführt
+# wird. Beim Wert Null wird iteriert, bis keine Verbesserung mehr
+# eintritt. Anderenfalls gibt der Absolutbetrag die Anzahl der
+# Iterationen an. Bei einem positiven Wert wird, wie beim Wert Null, in
+# jeder Iteration geprüft, ob nach einer Veränderung der Mengen
+# tatsächlich eine Verbesserung stattgefunden hat.
+#
+# Mögliche Werte: integer
+# mittlereIterAnz = -1
+
+mittlereIterAnz = 0
+
+# Die Anzahl der inneren Iterationen, in denen aus den allgemeinen
+# Konzepten korrekte oder vollständige Konzepte erzeugt werden. Beim Wert
+# Null wird iteriert, bis keine Verbesserung mehr eintritt. Anderenfalls
+# gibt der Absolutbetrag die Anzahl der Iterationen an. Bei einem
+# positiven Wert wird, wie beim Wert Null, in jeder Iteration geprüft, ob
+# nach einer Veränderung der Mengen tatsächlich eine Verbesserung
+# stattgefunden hat.
+#
+# Mögliche Werte: integer
+# innereIterAnz = 0
+
+innereIterAnz = 5
+
+# Die minimale Anzahl der zu speichernden Teilmengen von allgemeinen
+# Konzepten zur Erzeugung spezieller Konzepte. Ein negativer Wert steht für
+# für eine unbeschränkte Anzahl und es findet keine Auswahl statt.
+#
+# Der zugehörige Wert für die Anzahl der Iterationen ist "erzSpezScpIterAnz".
+#
+# Mögliche Werte: integer
+# algSpezItmAnz = -1
+
+algSpezItmAnz = 1000
+
+# Die minimale Anzahl der zu speichernden Teilmengen von speziellen, d.h.
+# von korrekten oder vollständigen, Konzepten zur Erzeugung von Formeln. Ein
+# negativer Wert steht für für eine unbeschränkte Anzahl und es findet keine
+# Auswahl statt.
+#
+# Die zugehörigen Werte für die Anzahl der Iterationen sind
+# "erzFormScpIterAnz" und "finFormScpIterAnz".
+#
+# Mögliche Werte: integer
+# spezFormItmAnz = -1
+
+spezFormItmAnz = 1000
+
+# Die minimale Anzahl der zu speichernden Teilmengen zur Auswahl der
+# allgemeinen Konzepte bei der Optimierung eines speziellen Konzepts. Bei
+# einem negativen Wert werden alle Teilmengen aufgenommen und es findet
+# keine Auswahl statt. Beim Wert Null findet keine Optimierung statt.
+#
+# Der zugehörige Wert für die Anzahl der Iterationen ist "optSpezScpIterAnz".
+#
+# Mögliche Werte: integer
+# optSpezItmAnz = -1
+
+optSpezItmAnz = 1000
+
+# Die minimale Anzahl der zu speichernden Teilmengen zur Auswahl der
+# speziellen Konzepte bei der Optimierung eines finalen Konzepts. Bei
+# einem negativen Wert werden alle Teilmengen aufgenommen und es findet
+# keine Auswahl statt. Beim Wert Null findet keine Optimierung statt.
+#
+# Der zugehörige Wert für die Anzahl der Iterationen ist "optFinScpIterAnz".
+#
+# Mögliche Werte: integer
+# optFinItmAnz = -1
+
+optFinItmAnz = 1000
+

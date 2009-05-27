@@ -1,0 +1,188 @@
+                             Vorhandene Dateien
+
+
+kpa7kr-wtm-ZZZ.arff
+===================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißem Bauern auf a7, schwarzem König und
+schwarzem Turm mit Weiß am Zug (mit vollständiger Definition der
+Korrektheit). Die Klassifikation gibt an, ob die Stellung für Weiß
+gewonnen (ZZZ = white), für Schwarz gewonnen (ZZZ = black) oder remis
+(ZZZ = drawn) ist.
+
+Erzeugung
+---------
+
+fpc espanalyse3.pp
+fpc espanalyse4.pp
+
+./espanalyse3
+  Eingaben:
+   + wD
+   + (D)atenerzeugung
+   + KQK.lpd
+
+./espanalyse3
+  Eingaben:
+   + wx
+   + (D)atenerzeugung
+   + KQK.lpd
+   + KPK.lpd
+
+./espanalyse3
+  Eingaben:
+   + sT
+   + (D)atenerzeugung
+   + KKR.lpd
+
+./espanalyse4
+  Eingaben:
+   + wDsT
+   + (D)atenerzeugung
+   + KQK.lpd
+   + KKR.lpd
+   + KQKR.lpd
+
+./espanalyse4
+  Eingaben:
+   + wasT
+   + (U)ntersuchung
+   + (v)ollstaendige
+   + (G)ewinn
+   + KPK.lpd
+   + KKR.lpd
+   + KQKR.lpd
+   + (S)eichern
+   + KPKR.lpd
+
+java -Xmx1600m egtb/Conversion -white -legal -nocaptures -noconversions KPKR.lpd
+  (dauert etwa 1,5 Minuten)
+
+In KPKR_lippold.arff folgende Zeile am Anfang einfügen:
+% for all positions : white to move
+
+In KPKR_lippold.arff den Kommentar vor dem Attribut "plies" entfernen.
+
+cat KPKR_lippold.arff | ./spiegel-stell.pl > kpakr-wtm.arff
+  wobei in spiegel-stell.pl der Variablen $steinanz der Wert 4 zugewiesen
+  sein muß.
+
+cat kpakr-wtm.arff | ./stellungsfilter.pl > kpa7kr-wtm.arff
+  wobei als Test in stellungsfilter.pl zu verwenden ist:
+    if ($whitePieceRank == 7)
+
+In kpa7kr-wtm.arff die Angabe in der ersten Zeile hinter @relation ändern in:
+KPa7KR_lippold
+
+cat kpa7kr-wtm.arff | ./isWon4.pl ja > kpa7kr-wtm-white.arff
+
+cat kpa7kr-wtm.arff | ./isWon4.pl nein > kpa7kr-wtm-black.arff
+
+cat kpa7kr-wtm.arff | ./isDrawn4.pl > kpa7kr-wtm-drawn.arff
+
+In kpa7kr-wtm-drawn.arff den folgenden Kommentar vor dem Attribut "draw"
+einfügen:
+% true, if the outcome of the game is draw, otherwise false
+
+In kpa7kr-wtm-drawn.arff den Namen des Attributs "draw" ersetzen durch
+"class".
+
+In kpa7kr-wtm-white.arff den folgenden Kommentar vor dem Attribut "won"
+einfügen:
+% true, if the game can be won for white, otherwise false
+
+In kpa7kr-wtm-white.arff den Namen des Attributs "won" ersetzen durch
+"class".
+
+In kpa7kr-wtm-black.arff den folgenden Kommentar vor dem Attribut "won"
+einfügen:
+% true, if the game can be won for black, otherwise false
+
+In kpa7kr-wtm-black.arff den Namen des Attributs "won" ersetzen durch
+"class".
+
+Daten
+-----
+
+    ZZZ  | Anz. true | Anz. false | Anz. gesamt
+  ----------------------------------------------
+   white |    129821 |      79897 |      209718
+   black |     55326 |     154392 |      209718
+   drawn |     24571 |     185147 |      209718
+
+
+kpa7kr-btm-ZZZ.arff
+===================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißem Bauern auf a7, schwarzem König und
+schwarzem Turm mit Schwarz am Zug (mit vollständiger Definition der
+Korrektheit). Die Klassifikation gibt an, ob die Stellung für Weiß
+gewonnen (ZZZ = white), für Schwarz gewonnen (ZZZ = black) oder remis
+(ZZZ = drawn) ist.
+
+Erzeugung
+---------
+
+Die Datei KPKR.lpd wie oben beschrieben erzeugen.
+
+java -Xmx1600m egtb/Conversion -black -legal -nocaptures -noconversions KPKR.lpd
+  (dauert etwa 1,5 Minuten)
+
+In KPKR_lippold.arff folgende Zeile am Anfang einfügen:
+% for all positions : black to move
+
+In KPKR_lippold.arff den Kommentar vor dem Attribut "plies" entfernen.
+
+cat KPKR_lippold.arff | ./spiegel-stell.pl > kpakr-btm.arff
+  wobei in spiegel-stell.pl der Variablen $steinanz der Wert 4 zugewiesen
+  sein muß.
+
+cat kpakr-btm.arff | ./stellungsfilter.pl > kpa7kr-btm.arff
+  wobei als Test in stellungsfilter.pl zu verwenden ist:
+    if ($whitePieceRank == 7)
+
+In kpa7kr-btm.arff die Angabe in der ersten Zeile hinter @relation ändern in:
+KPa7KR_lippold
+
+cat kpa7kr-btm.arff | ./isWon4.pl nein > kpa7kr-btm-white.arff
+
+cat kpa7kr-btm.arff | ./isWon4.pl ja > kpa7kr-btm-black.arff
+
+cat kpa7kr-btm.arff | ./isDrawn4.pl > kpa7kr-btm-drawn.arff
+
+In kpa7kr-btm-drawn.arff den folgenden Kommentar vor dem Attribut "draw"
+einfügen:
+% true, if the outcome of the game is draw, otherwise false
+
+In kpa7kr-btm-drawn.arff den Namen des Attributs "draw" ersetzen durch
+"class".
+
+In kpa7kr-btm-white.arff den folgenden Kommentar vor dem Attribut "won"
+einfügen:
+% true, if the game can be won for white, otherwise false
+
+In kpa7kr-btm-white.arff den Namen des Attributs "won" ersetzen durch
+"class".
+
+In kpa7kr-btm-black.arff den folgenden Kommentar vor dem Attribut "won"
+einfügen:
+% true, if the game can be won for black, otherwise false
+
+In kpa7kr-btm-black.arff den Namen des Attributs "won" ersetzen durch
+"class".
+
+Daten
+-----
+
+    ZZZ  | Anz. true | Anz. false | Anz. gesamt
+  ----------------------------------------------
+   white |       993 |     166489 |      167482
+   black |    140787 |      26695 |      167482
+   drawn |     25702 |     141780 |      167482
+

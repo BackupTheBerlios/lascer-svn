@@ -1,0 +1,48 @@
+                             Vorhandene Dateien
+
+
+heart-statlog-present.arff
+==========================
+
+Beschreibung
+------------
+
+Daten zum Auftreten einer Herz-Erkrankung. Die Klassifikation erfolgte
+danach, ob die Erkrankung auftrat.
+
+
+Erzeugung
+---------
+
+Datei heart-statlog.arff aus dem Paket
+http://prdownloads.sourceforge.net/weka/datasets-UCI.jar entnehmen.
+
+Am Anfang der Datei heart-statlog.arff folgendes einfügen:
+>>>
+% Grundlage der Daten: Datei heart-statlog.arff aus dem UCI repository von
+% http://www.cs.waikato.ac.nz/ml/weka/index_datasets.html
+% Download: http://prdownloads.sourceforge.net/weka/datasets-UCI.jar
+
+<<<
+
+cat heart-statlog.arff | ./attribAenderung.pl > heart-statlog-present.arff
+  wobei in attribAenderung.pl das Attribut "class" gegen den Attributwert
+  "present" verglichen wird und das vorhandene Attribut "class" entfernt
+  wird.
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+
+% true, wenn "class" den Wert "present" hatte, sonst false
+<<<
+
+
+Daten
+-----
+
+   # true | # false | Anz. gesamt
+  --------------------------------
+     120  |    150  |      270
+
+Daten ermittelt mit inkonsAnzahl.pl
+

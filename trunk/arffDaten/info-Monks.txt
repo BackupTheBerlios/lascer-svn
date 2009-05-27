@@ -1,0 +1,70 @@
+                             Vorhandene Dateien
+
+
+monks-problems-N_ZZZ-mod.arff
+=============================
+
+Beschreibung
+------------
+
+Daten, die zu vorgegebenen Konzepten für einen Vergleich von Lernverfahren
+erzeugt wurden. Es sind jeweils getrennte Trainings- und Test-Daten
+vorhanden. Die Klasse mit dem Wert "1" wurde in allen Dateien zu "true"
+konvertiert.
+
+Die Konzepte, die den drei Problemen zugrunde liegen, sind:
+
+ 1.: (a1 = a2) or (a5 = 1)
+ 2.: EXACTLY TWO of {a1 = 1, a2 = 1, a3 = 1, a4 = 1, a5 = 1, a6 = 1}
+ 3.: (a5 = 3 and a4 = 1) or (a5 /= 4 and a2 /= 3)
+     (5% class noise added to the training set)
+
+N gibt die Nummer des Problems an.  ZZZ im Dateinamen ist durch "train" für
+die Trainingsdaten und "test" für die Testdaten zu ersetzen.
+
+Eine Überprüfung der Fehleranzahl im dritten Problem ergibt jedoch, daß
+von den 60 positiven Beispielen der Trainingsdaten ein Beispiel (1.7 %) und
+von den 62 negativen Beispielen fünf Beispiele (8,1 %) mit der angegebenen
+Formel falsch klassifiziert werden.
+
+
+Erzeugung
+---------
+
+Dateien monks-problems-N_ZZZ.arff aus dem Verzeichnis "nominal" vom Paket
+http://prdownloads.sourceforge.net/weka/uci-20050214.tar.gz
+entnehmen.
+
+Am Anfang der Datei monks-problems-N_ZZZ.arff folgendes einfügen:
+>>>
+% Grundlage der Daten: Datei monks-problems-N_ZZZ.arff aus den "UCI and UCI
+% KDD datasets" unter http://www.cs.waikato.ac.nz/ml/weka/index_datasets.html
+% Download: http://prdownloads.sourceforge.net/weka/uci-20050214.tar.gz
+
+<<<
+
+cat monks-problems-N_ZZZ.arff | ./attribAenderung.pl > monks-problems-N_ZZZ-mod.arff
+  wobei in attribAenderung.pl das Attribut "class" gegen den Attributwert
+  1 verglichen wird und das vorhandene Attribut "class" entfernt wird.
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+
+% true, wenn "class" den Wert 1 hatte, sonst false
+<<<
+
+
+Daten
+-----
+
+   N |  ZZZ  | # true | # false | Anz. gesamt
+  --------------------------------------------
+   1 | train |    62  |     62  |      124
+   1 | test  |   216  |    216  |      432
+   2 | train |    64  |    105  |      169
+   2 | test  |   142  |    290  |      432
+   3 | train |    60  |     62  |      122
+   3 | test  |   228  |    204  |      432
+
+Daten ermittelt mit inkonsAnzahl.pl
+
