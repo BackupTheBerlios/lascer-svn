@@ -1,0 +1,123 @@
+                   Beschreibung der vorhandenen Bibliotheken
+
+
+archiUser.jar
+-------------
+
+Funktion:
+  Benutzung von Architeuthis zur Verwendung der verteilten Berechnung.
+
+Quelle:
+  http://architeuthis.berlios.de/
+  Im Paket testenvironment-* als Datei "User.jar" vorhanden.
+
+Vorhandene Version:
+  2.0.1
+
+
+commandline.jar
+---------------
+
+Funktion:
+  Einlesen von Kommandozeilen-Parametern.
+
+Quelle:
+  http://architeuthis.berlios.de/
+
+Vorhandene Version:
+  2.0.1
+
+
+coreExtended.jar
+----------------
+
+Funktion:
+  Eine Erweiterung der Klassen von WEKA zur Datenrepräsentation um
+  Meta-Attribute und Meta-Instanzen, wobei letztere Beschreibungen der
+  normalen Attribute darstellen.
+
+Quelle:
+  Lokal (http://lascer.berlios.de/).
+
+Vorhandene Version:
+  1.0 von Lascer (vom 27.12.2005)
+
+
+geomClusterung.jar
+------------------
+
+Funktion:
+  Bibliothek zur Erzeugung der konvexen Hülle zu einer Menge von Punkten.
+
+Quelle:
+  Lokal (http://lascer.berlios.de/).
+
+Vorhandene Version:
+  1.0 von Lascer (vom 09.06.2005)
+
+
+junit.jar
+---------
+
+Funktion:
+  Bibliothek für Unit-Tests.
+
+Quelle:
+  http://www.junit.org/
+
+Vorhandene Version:
+  3.8.1
+
+
+mathCollection.jar
+------------------
+
+Funktion:
+  Bibliothek realisiert effiziente mathematische Mengen.
+
+Quelle:
+  http://mathcollection.berlios.de/
+
+Vorhandene Version:
+  1.3.3
+
+
+mengenUeberdeckung.jar
+----------------------
+
+Funktion:
+  Bibliothek zur Erzeugung von Lösungen zum "set covering problems" (SCP)
+  und zum "set covering and exclusion problems" (SECP).
+
+Quelle:
+  Lokal (http://lascer.berlios.de/).
+
+Vorhandene Version:
+  1.0 von Lascer
+
+
+poi-2.5.jar
+-----------
+
+Funktion:
+  Bibliothek zum Zugriff auf Microsoft Office Dateien.
+
+Quelle:
+  http://poi.apache.org/
+
+Vorhandene Version:
+  2.5
+
+
+weka.jar
+--------
+
+Funktion:
+  Bibliothek zum Maschinellen Lernen.
+
+Quelle:
+   http://sourceforge.net/projects/weka/
+
+Vorhandene Version:
+  3.4.7
+

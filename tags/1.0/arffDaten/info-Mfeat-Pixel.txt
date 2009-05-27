@@ -1,0 +1,59 @@
+                             Vorhandene Dateien
+
+
+mfeat-pixel-Z.arff
+==================
+
+Beschreibung
+------------
+
+Daten zur optischen Erkennung handgeschriebener Ziffern mittels der
+durchschnittlichen Pixel-Anzahl in einem 2 x 3 Fenster aus einem 15 x 16
+Raster. Der Wert Z gibt die Ziffer an, die in der jeweiligen Datei als
+Klasse verwendet wurde.
+
+
+Erzeugung
+---------
+
+Datei mfeat-pixel.arff aus dem Verzeichnis "nominal" vom Paket
+http://prdownloads.sourceforge.net/weka/uci-20050214.tar.gz
+entnehmen.
+
+Am Anfang der Datei mfeat-pixel.arff folgendes einfügen:
+>>>
+% Grundlage der Daten: Datei mfeat-pixel.arff aus den "UCI and UCI
+% KDD datasets" unter http://www.cs.waikato.ac.nz/ml/weka/index_datasets.html
+% Download: http://prdownloads.sourceforge.net/weka/uci-20050214.tar.gz
+
+<<<
+
+cat mfeat-pixel.arff | ./attribAenderung.pl >  mfeat-pixel-Z.arff
+  wobei in attribAenderung.pl das Attribut "class" gegen den Attributwert
+  (Z + 1) verglichen wird und das vorhandene Attribut "class" entfernt wird.
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+
+% true, wenn "class" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwertes (Z + 1) zu ersetzen ist.
+
+
+Daten
+-----
+
+   N | # true | # false | Anz. gesamt
+  ------------------------------------
+   1 |   200  |   1800  |     2000
+   2 |   200  |   1800  |     2000
+   3 |   200  |   1800  |     2000
+   4 |   200  |   1800  |     2000
+   5 |   200  |   1800  |     2000
+   6 |   200  |   1800  |     2000
+   7 |   200  |   1800  |     2000
+   8 |   200  |   1800  |     2000
+   9 |   200  |   1800  |     2000
+
+Daten ermittelt mit inkonsAnzahl.pl
+

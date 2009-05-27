@@ -1,0 +1,200 @@
+                           Vorhandene Dateien
+
+
+eucalyptus-NN.arff
+==================
+
+Beschreibung
+------------
+
+Daten zur Verwendbarkeit von Pflanzen unter bestimmten Umwelt-Bedingungen.
+Die Klassifikation erfolgt nach der Beurteilung der Nützlichkeit, die durch
+das Attribut "Utility" angegeben wird.
+
+
+Erzeugung
+---------
+
+Datei eucalyptus.arff aus dem Paket 
+http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar entnehmen.
+
+cat eucalyptus.arff | ./attribAenderung.pl > eucalyptus-NN.arff
+  wobei in attribAenderung.pl das Attribut "Utility" gegen den Attributwert
+  NN verglichen wird.
+
+Am Anfang der Datei eucalyptus-NN.arff folgendes einfügen:
+>>>
+% Grundlage der Daten:
+% http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar
+
+<<<
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+% true, wenn "Utility" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwertes NN zu ersetzen ist.
+
+Leerzeile unmittelbar nach @data entfernen.
+
+
+Daten
+-----
+
+     NN  | # true | # false | Anz. gesamt
+  --------------------------------------
+    none |   180  |    556  |     736
+    low  |   107  |    629  |     736
+    aver |   130  |    606  |     736
+    good |   214  |    522  |     736
+    best |   105  |    631  |     736
+
+Daten ermittelt mit inkonsAnzahl.pl
+
+
+squash-unstored-NN.arff
+=======================
+
+Beschreibung
+------------
+
+Daten zur Beurteilung der Qualität von Früchten aufgrund verschiedener
+Erntebedingungen, ohne das Gewichts der Früchte nach Lagerung.
+
+Erzeugung
+---------
+
+Datei squash-unstored.arff aus dem Paket
+http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar entnehmen.
+
+cat squash-unstored.arff | ./attribAenderung.pl > squash-unstored-NN.arff
+  wobei in attribAenderung.pl das Attribut "Acceptability" gegen den
+  Attributwert NN verglichen wird
+  (ok = ok, ex = excellent, ns = not_suitable).
+
+Am Anfang der Datei squash-unstored-NN.arff folgendes einfügen:
+>>>
+% Grundlage der Daten:
+% http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar
+
+<<<
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+% true, wenn "Acceptability" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwertes NN zu ersetzen ist
+
+Leerzeile unmittelbar nach @data entfernen.
+
+
+Daten
+-----
+
+    NN  | # true | # false | Anz. gesamt
+  --------------------------------------
+    ex  |     4  |     48  |     52
+    ok  |    24  |     28  |     52
+    ns  |    24  |     28  |     52
+
+Daten ermittelt mit inkonsAnzahl.pl
+
+
+squash-stored-NN.arff
+=====================
+
+Beschreibung
+------------
+
+Daten zur Beurteilung der Qualität von Früchten aufgrund verschiedener
+Erntebedingungen, inklusive des Gewichts der Früchte nach Lagerung.
+
+Erzeugung
+---------
+
+Datei squash-stored.arff aus dem Paket
+http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar entnehmen.
+
+cat squash-stored.arff | ./attribAenderung.pl > squash-stored-NN.arff
+  wobei in attribAenderung.pl das Attribut "Acceptability" gegen den
+  Attributwert NN verglichen wird
+  (ex = excellent, ok = ok, na = not_acceptable).
+
+Am Anfang der Datei squash-stored-NN.arff folgendes einfügen:
+>>>
+% Grundlage der Daten:
+% http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar
+
+<<<
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+% true, wenn "Acceptability" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwertes NN zu ersetzen ist
+
+Leerzeile unmittelbar nach @data entfernen.
+
+
+Daten
+-----
+
+    NN  | # true | # false | Anz. gesamt
+  --------------------------------------
+    ex  |    23  |     29  |     52
+    ok  |    21  |     31  |     52
+    na  |     8  |     44  |     52
+
+Daten ermittelt mit inkonsAnzahl.pl
+
+
+white-clover-N.arff
+===================
+
+Beschreibung
+------------
+
+Daten zur vorhandenen Umfang von weißem Klee im Jahr 1994 in Abhängigkeit vom
+Umfang in früheren Jahren und von Umfang anderer Gewächse.
+
+
+Erzeugung
+---------
+
+Datei white-clover.arff aus dem Paket
+http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar entnehmen.
+
+cat white-clover.arff | ./attribAenderung.pl > white-clover.arff-N.arff
+  wobei in attribAenderung.pl das Attribut "WhiteClover-94" gegen den
+  Attributwert mit der Nummer N verglichen wird
+  (1 : 0<=WhiteClover-94<8.8225, 2 : 8.8225<=WhiteClover-94<17.645,
+   3 : 17.645<=WhiteClover-94<26.4675, 4 : 26.4675<=WhiteClover-94<=35.29).
+
+Am Anfang der Datei white-clover.arff-N.arff folgendes einfügen:
+>>>
+% Grundlage der Daten:
+% http://www.cs.waikato.ac.nz/~ml/weka/agridatasets.jar
+
+<<<
+
+Vor dem neuen Attribut class folgenden Kommentar ergänzen:
+>>>
+% true, wenn "WhiteClover-94" den Wert "???" hatte, sonst false
+<<<
+wobei ??? durch den Namen des Attributwerts mit der Nummer N zu ersetzen ist
+
+Leerzeile unmittelbar nach @data entfernen.
+
+
+Daten
+-----
+
+    N  | # true | # false | Anz. gesamt
+  -------------------------------------
+    1  |    38  |     25  |     63
+    2  |    20  |     43  |     63
+    3  |     4  |     59  |     63
+    4  |     1  |     62  |     63
+
+Daten ermittelt mit inkonsAnzahl.pl
+

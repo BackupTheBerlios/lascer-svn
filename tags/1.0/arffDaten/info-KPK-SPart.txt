@@ -1,0 +1,118 @@
+                             Vorhandene Dateien
+
+
+kpXk-wpm-perf.arff (mit X = a, b, c, d oder x)
+==================
+
+Beschreibung
+------------
+
+Gleiches Endspiel wie bei der Datei kpXk-wtm-perf.arff aus dem Verzeichnis
+KPK-Succ, wobei jedoch nur Züge des weißen Bauern enthalten sind.
+
+Erzeugung
+---------
+
+Datei kpXk-wtm-perf.arff erzeugen
+
+cat kpXk-wtm-perf.arff | ./beispielfilter.pl arff > kpXk-wtm-pm-perf.arff
+  wobei als Test verwendet wird:
+    my $wprt = $werte[$attribNummern{"whitePawnRankTarget"}];
+    my $wpr = $werte[$attribNummern{"whitePawnRank"}];
+
+    if ($wprt > $wpr) {
+      $ausgeben = 1;
+    } else {
+      $ausgeben = 0;
+    }
+
+cat kpXk-wtm-pm-perf.arff | ./attribAenderung.pl > kpXk-wpm-perf.arff
+  wobei @entfernenAttribute folgender Wert zugewiesen wird:
+    ('whiteKingFileTarget', 'whiteKingRankTarget', 'blackKingFileTarget', 'blackKingRankTarget');
+  den Variablen @neueAttribNamen und %neueAttribute jeweils eine leere Liste
+  zugewiesen wird und die Berechnung neuer Attribute entfernt wird.
+
+Daten
+-----
+
+  X | Anz. true | Anz. false | Anz. gesamt
+ -----------------------------------------
+  a |     14542 |       2055 |     16597
+  b |     13954 |       3616 |     17570
+  c |     13130 |       4490 |     17620
+  d |     13062 |       5014 |     18076
+  x |     54688 |      15175 |     69863
+
+
+kpXk-wkm-perf.arff (mit X = a, b, c, d oder x)
+==================
+
+Beschreibung
+------------
+
+Gleiches Endspiel wie bei der Datei kpXk-wtm-perf.arff aus dem Verzeichnis
+KPK-Succ, wobei jedoch nur Züge des weißen Königs enthalten sind.
+
+Erzeugung
+---------
+
+Datei kpXk-wtm-perf.arff erzeugen
+
+cat kpXk-wtm-perf.arff | ./beispielfilter.pl arff > kpXk-wtm-km-perf.arff
+  wobei als Test verwendet wird:
+    my $wprt = $werte[$attribNummern{"whitePawnRankTarget"}];
+    my $wpr = $werte[$attribNummern{"whitePawnRank"}];
+
+    if ($wprt == $wpr) {
+      $ausgeben = 1;
+    } else {
+      $ausgeben = 0;
+    }
+
+cat kpXk-wtm-km-perf.arff | ./attribAenderung.pl > kpXk-wkm-perf.arff
+  wobei @entfernenAttribute folgender Wert zugewiesen wird:
+    ('whitePawnFileTarget', 'whitePawnRankTarget', 'blackKingFileTarget', 'blackKingRankTarget');
+  den Variablen @neueAttribNamen und %neueAttribute jeweils eine leere Liste
+  zugewiesen wird und die Berechnung neuer Attribute entfernt wird.
+
+Daten
+-----
+
+  X | Anz. true | Anz. false | Anz. gesamt
+ -----------------------------------------
+  a |      2546 |      89616 |     92162
+  b |      6424 |      88055 |     94479
+  c |      7686 |      88026 |     95712
+  d |      8808 |      89921 |     98729
+  x |     25464 |     355618 |    381082
+
+
+kpXk-wkm-perf-red.arff (mit X = a, b, c, d oder x)
+======================
+
+Beschreibung
+------------
+
+Gleiches Endspiel wie bei der Datei kpXk-wkm-perf.arff, wobei jedoch die
+Züge, bei denen schon ein Bauernzug optimal ist, entfernt wurden.
+
+Erzeugung
+---------
+
+Datei kpXk-wpm-perf.arff und kpXk-wkm-perf.arff erzeugen
+
+cat kpXk-wpm-perf.arff | grep ".*,.*,.*,.*" | grep true | cut -c 1-11 > pX-perf
+
+./filter-anfaenge.pl pX-perf kpXk-wkm-perf.arff > kpXk-wkm-perf-red.arff
+
+Daten
+-----
+
+  X | Anz. true | Anz. false | Anz. gesamt
+ -----------------------------------------
+  a |      1115 |       1585 |      2700
+  b |      3325 |       7482 |     10807
+  c |      4568 |      11511 |     16079
+  d |      5278 |      13245 |     18523
+  x |     14286 |      33823 |     48109
+

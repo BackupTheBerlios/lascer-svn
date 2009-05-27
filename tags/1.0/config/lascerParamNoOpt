@@ -1,0 +1,58 @@
+# Datei          : lascerParamNoOpt
+# Letzte Änderung: 04. September 2006 durch Dietmar Lippold
+# Autoren        : Dietmar Lippold, Copyright 2006
+#
+# Diese Datei gehört zum Projekt Lascer (http://lascer.berlios.de/).
+# Siehe Datei "license.txt" für Hinweise zur Lizenz.
+
+# Datei mit Konfigurations-Parametern, durch die in Abänderung der
+# Standard-Parameter keine Optimierung eines speziellen Konzepts oder einer
+# finalen Formel erfolgt.
+
+# Der Name der Parameter-Datei ist der Klasse FormelErzeugung oder Weka als
+# Kommandozeilen-Parameter der Option -configParam zu übergeben. Unabhängig
+# von den folgenden Parametern kann noch die Option -logging ohne weiteren
+# Wert in der Kommandozeile angegeben werden.
+
+# Die Standard-Werte und die möglichen Werte sind jeweils als Kommentar mit
+# angegeben.
+
+
+#
+# Parameter für die Erzeugung der Prädikate.
+#
+
+# Die Standard-Werte.
+
+
+#
+# Parameter für die Erzeugung der Prädikate und der Konzept-Erzeuger.
+#
+
+# Der Standard-Wert.
+
+
+#
+# Parameter für die Erzeugung der Konzept-Erzeuger.
+#
+
+# Die minimale Anzahl der zu speichernden Teilmengen zur Auswahl der
+# allgemeinen Konzepte bei der Optimierung eines speziellen Konzepts. Bei
+# einem negativen Wert werden alle Teilmengen aufgenommen und es findet
+# keine Auswahl statt. Beim Wert Null findet keine Optimierung statt.
+#
+# Mögliche Werte: integer
+# optSpezItmAnz = -1
+
+optSpezItmAnz = 0
+
+# Die minimale Anzahl der zu speichernden Teilmengen zur Auswahl der
+# speziellen Konzepte bei der Optimierung eines finalen Konzepts. Bei
+# einem negativen Wert werden alle Teilmengen aufgenommen und es findet
+# keine Auswahl statt. Beim Wert Null findet keine Optimierung statt.
+#
+# Mögliche Werte: integer
+# optFinItmAnz = -1
+
+optFinItmAnz = 0
+

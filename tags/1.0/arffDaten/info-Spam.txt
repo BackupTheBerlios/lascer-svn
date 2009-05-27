@@ -1,0 +1,146 @@
+                              Vorhandene Dateien
+
+
+spam-1-oi.arff
+==============
+
+Beschreibung
+------------
+
+Konsistente Datei zur Klassifikation von Mails von bmenschel. Inkonsistente
+Spam-Mails in den Original-Daten wurden entfernt. Indirekte Regeln (die mit
+einem Unterstrich beginnen) sind nicht enthalten (oi : ohne indirekte).
+
+Erzeugung
+---------
+
+./spamLog-to-arff.pl spam-1.log ham-1.log spam-1-oi nein > spam-1-oi-inkons.arff
+
+./inkonsFilter.pl spam-1-oi-inkons.arff ja nein > spam-1-oi-attribAlt.arff
+
+cat spam-1-oi-attribAlt.arff | ./komprimierSpamDat.pl > spam-1-oi.arff
+
+Daten
+-----
+
+Anz. true : 14554
+Anz. false: 14993
+Gesamtanz.: 29547
+
+Ermittelt mit:
+./inkonsAnzahl.pl spam-1-oi.arff
+
+Anzahl der Attribute: 420
+
+Anzahl true-Attrib.-Wert bei pos. Bsp. : 136453
+Anzahl true-Attrib.-Wert bei neg. Bsp. :  26222
+Anzahl true-Attrib.-Wert bei allen Bsp.: 162675
+
+
+spam-1-mi.arff
+==============
+
+Beschreibung
+------------
+
+Konsistente Datei zur Klassifikation von Mails von bmenschel. Inkonsistente
+Spam-Mails in den Original-Daten wurden entfernt. Indirekte Regeln (die mit
+einem Unterstrich beginnen) sind enthalten (mi : mit indirekten).
+
+Erzeugung
+---------
+
+./spamLog-to-arff.pl spam-1.log ham-1.log spam-1-mi ja > spam-1-mi-inkons.arff
+
+./inkonsFilter.pl spam-1-mi-inkons.arff ja nein > spam-1-mi-attribAlt.arff
+
+cat spam-1-mi-attribAlt.arff | ./komprimierSpamDat.pl > spam-1-mi.arff
+
+Daten
+-----
+
+Anz. true : 14932
+Anz. false: 14993
+Gesamtanz.: 29925
+
+Ermittelt mit:
+./inkonsAnzahl.pl spam-1-mi.arff
+
+Anzahl der Attribute: 609
+
+Anzahl true-Attrib.-Wert bei pos. Bsp. : 380656
+Anzahl true-Attrib.-Wert bei neg. Bsp. : 225684
+Anzahl true-Attrib.-Wert bei allen Bsp.: 606340
+
+
+spam-2-oi.arff
+==============
+
+Beschreibung
+------------
+
+Konsistente Datei zur Klassifikation von Mails von quinlan. Inkonsistente
+Spam-Mails in den Original-Daten wurden entfernt. Indirekte Regeln (die mit
+einem Unterstrich beginnen) sind nicht enthalten (oi : ohne indirekte).
+
+Erzeugung
+---------
+
+./spamLog-to-arff.pl spam-2.log ham-2.log spam-2-oi nein > spam-2-oi-inkons.arff
+
+./inkonsFilter.pl spam-2-oi-inkons.arff ja nein > spam-2-oi-attribAlt.arff
+
+cat spam-2-oi-attribAlt.arff | ./komprimierSpamDat.pl > spam-2-oi.arff
+
+Daten
+-----
+
+Anz. true : 47029
+Anz. false: 28344
+Gesamtanz.: 75373
+
+Ermittelt mit:
+./inkonsAnzahl.pl spam-2-oi.arff
+
+Anzahl der Attribute: 461
+
+Anzahl true-Attrib.-Wert bei pos. Bsp. : 516326
+Anzahl true-Attrib.-Wert bei neg. Bsp. :   9598
+Anzahl true-Attrib.-Wert bei allen Bsp.: 525924
+
+
+spam-2-mi.arff
+==============
+
+Beschreibung
+------------
+
+Konsistente Datei zur Klassifikation von Mails von quinlan. Inkonsistente
+Spam-Mails in den Original-Daten wurden entfernt. Indirekte Regeln (die mit
+einem Unterstrich beginnen) sind enthalten (mi : mit indirekten).
+
+Erzeugung
+---------
+
+./spamLog-to-arff.pl spam-2.log ham-2.log spam-2-mi ja > spam-2-mi-inkons.arff
+
+./inkonsFilter.pl spam-2-mi-inkons.arff ja nein > spam-2-mi-attribAlt.arff
+
+cat spam-2-mi-attribAlt.arff | ./komprimierSpamDat.pl > spam-2-mi.arff
+
+Daten
+-----
+
+Anz. true : 47412
+Anz. false: 28344
+Gesamtanz.: 75756
+
+Ermittelt mit:
+./inkonsAnzahl.pl spam-2-mi.arff
+
+Anzahl der Attribute: 664
+
+Anzahl true-Attrib.-Wert bei pos. Bsp. : 1311417
+Anzahl true-Attrib.-Wert bei neg. Bsp. :  353752
+Anzahl true-Attrib.-Wert bei allen Bsp.: 1665169
+

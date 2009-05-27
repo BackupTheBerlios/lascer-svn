@@ -1,0 +1,114 @@
+                              Vorhandene Dateien
+
+
+kpXk-wtm-won.arff (mit X = a, b, c, d oder x)
+=================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißem X-Bauern und schwarzem König mit Weiß am
+Zug (mit vollständiger Definition der Korrektheit). Illegale Stellungen,
+Stellungen mit geschlagenem Bauern und Stellungen mit dem Bauern auf der
+Umwandlungsreihe sind nicht enthalten. Die Klassifikation gibt an, ob die
+Stellung gewinnbar ist.
+
+Erzeugung
+---------
+
+fpc espanalyse3.pp
+
+./espanalyse3
+  Eingaben:
+   + wD
+   + (D)atenerzeugung
+   + Datei: wQ.lpd
+
+./espanalyse3
+  Eingaben:
+   + wx
+   + (U)ntersuchung
+   + (v)ollstaendige
+   + (G)ewinn
+   + wQ.lpd
+   + (S)eichern
+   + KPK.lpd
+
+java egtb/Conversion -white -legal -nocaptures -noconversions KPK.lpd
+
+cat KPK_lippold.arff | ./spiegel-stell.pl > kpXk-wtm.arff
+  wobei in spiegel-stell.pl der Variablen $steinanz der Wert 3 zugewiesen
+  sein muß.
+
+cat kpXk-wtm.arff | ./isWon3.pl ja > kpXk-wtm-won.arff
+
+In kpXk-wtm-won.arff folgende Zeile am Anfang einfügen:
+% for all positions : white to move
+
+Die letzen beiden Kommentar-Zeile entfernen.
+
+Vor dem Attribut "won" folgende Zeile einfügen:
+% true, if the position can be won, otherwise false
+
+Die Attribut-Zeile selbst ist zu ersetzen durch:
+@attribute class {false, true}
+
+Daten
+-----
+
+  X | Anz. true | Anz. false | Anz. gesamt
+ -----------------------------------------
+  a |    15117  |      5526  |     20643
+  b |    15699  |      4630  |     20329
+  c |    15673  |      4673  |     20346
+  d |    15988  |      4358  |     20346
+  x |    62477  |     19187  |     81664
+
+
+kpXk-btm-won.arff (mit X = a, b, c, d oder x)
+=================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißem X-Bauern und schwarzem König mit Schwarz
+am Zug (mit vollständiger Definition der Korrektheit). Illegale Stellungen,
+Stellungen mit geschlagenem Bauern und Stellungen mit dem Bauern auf der
+Umwandlungsreihe sind nicht enthalten. Die Klassifikation gibt an, ob die
+Stellung gewinnbar ist.
+
+Erzeugung
+---------
+
+Erzeugung der Datei KPK.lpd wie oben.
+
+java egtb/Conversion -black -legal -nocaptures -noconversions KPK.lpd
+
+cat KPK_lippold.arff | ./spiegel-stell.pl > kpXk-btm.arff
+  wobei in spiegel-stell.pl der Variablen $steinanz der Wert 3 zugewiesen
+  sein muß.
+
+cat kpXk-btm.arff | ./isWon3.pl nein > kpXk-btm-won.arff
+
+In kpXk-btm-won.arff folgende Zeile am Anfang einfügen:
+% for all positions : black to move
+
+Die letzen beiden Kommentar-Zeile entfernen.
+
+Vor dem Attribut "won" folgende Zeile einfügen:
+% true, if the position can be won, otherwise false
+
+Die Attribut-Zeile selbst ist zu ersetzen durch:
+@attribute class {false, true}
+
+Daten
+-----
+
+  X | Anz. true | Anz. false | Anz. gesamt
+ -----------------------------------------
+  a |    12313  |      8663  |     20976
+  b |    12645  |      8367  |     21012
+  c |    12057  |      8955  |     21012
+  d |    11787  |      9225  |     21012
+  x |    48802  |     35210  |     84012
+

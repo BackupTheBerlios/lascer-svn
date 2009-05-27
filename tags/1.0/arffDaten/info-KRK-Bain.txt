@@ -1,0 +1,123 @@
+                             Vorhandene Dateien
+
+
+krk-btm-ZZZ.arff
+================
+
+Beschreibung
+------------
+
+Endspiel mit weißem König, weißem Turm und schwarzem König mit Schwarz am
+Zug, aus dem UCI Machine Learning Repository. Im Gegensatz zu den selbst
+erzeugten Dateien wurden symmetrische Stellungen anders behandelt. Während
+bei den selbst erzeugten Dateien der schwarze König auf die Felder von A1
+über D1 bis D4 eingeschränkt ist, ist bei dieser Datei der weisse König auf
+diese Felder eingeschränkt. Illegale Stellungen sind nicht enthalten. Die
+Klassifikation gibt an, ob die Stellung remis ist (ZZZ = drawn) oder in
+genau der Anzahl ZZZ von Zügen gewinnbar ist.
+
+Angaben zum Literaturverweis:
+http://mlearn.ics.uci.edu/MLRepository.html
+Quelle der Dateien:
+ftp://ftp.ics.uci.edu/pub/machine-learning-databases/chess/king-rook-vs-king
+Bescheibung der Datei:
+ftp://ftp.ics.uci.edu/pub/machine-learning-databases/chess/king-rook-vs-king/krkopt.info
+
+Erzeugung
+---------
+
+Erzeugung einer Datei "header" mit folgendem Inhalt:
+
+>>>
+@relation KRK_bain
+
+% for all positions : black to move
+
+% for all files: 1 <= rank <= 8, from bottom to top
+% for all ranks: 1 <= file <= 8, from left to right
+@attribute whiteKingFile integer
+@attribute whiteKingRank integer
+@attribute whiteRookFile integer
+@attribute whiteRookRank integer
+@attribute blackKingFile integer
+@attribute blackKingRank integer
+
+@attribute moves {draw, zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen}
+
+@data
+<<<
+
+wget ftp://ftp.ics.uci.edu/pub/machine-learning-databases/chess/king-rook-vs-king/krkopt.data
+
+sed -e 's/a,/1,/g' krkopt.data > krkopt.data-1
+sed -e 's/b,/2,/g' krkopt.data-1 > krkopt.data-2
+sed -e 's/c,/3,/g' krkopt.data-2 > krkopt.data-3
+sed -e 's/d,/4,/g' krkopt.data-3 > krkopt.data-4
+sed -e 's/e,/5,/g' krkopt.data-4 > krkopt.data-5
+sed -e 's/f,/6,/g' krkopt.data-5 > krkopt.data-6
+sed -e 's/g,/7,/g' krkopt.data-6 > krkopt.data-7
+sed -e 's/h,/8,/g' krkopt.data-7 > krkopt.data-8
+
+cat header krkopt.data-8 > krk-bn-btm-draw.arff
+grep -v 'draw$' krk-bn-btm-draw.arff > krk-bn-btm-zero.arff
+grep -v 'zero$' krk-bn-btm-zero.arff > krk-bn-btm-one.arff
+grep -v 'one$' krk-bn-btm-one.arff > krk-bn-btm-two.arff
+grep -v 'two$' krk-bn-btm-two.arff > krk-bn-btm-three.arff
+grep -v 'three$' krk-bn-btm-three.arff > krk-bn-btm-four.arff
+grep -v 'four$' krk-bn-btm-four.arff > krk-bn-btm-five.arff
+grep -v 'five$' krk-bn-btm-five.arff > krk-bn-btm-six.arff
+grep -v 'six$' krk-bn-btm-six.arff > krk-bn-btm-seven.arff
+grep -v 'seven$' krk-bn-btm-seven.arff > krk-bn-btm-eight.arff
+grep -v 'eight$' krk-bn-btm-eight.arff > krk-bn-btm-nine.arff
+grep -v 'nine$' krk-bn-btm-nine.arff > krk-bn-btm-ten.arff
+grep -v 'ten$' krk-bn-btm-ten.arff > krk-bn-btm-eleven.arff
+grep -v 'eleven$' krk-bn-btm-eleven.arff > krk-bn-btm-twelve.arff
+grep -v 'twelve$' krk-bn-btm-twelve.arff > krk-bn-btm-thirteen.arff
+grep -v 'thirteen$' krk-bn-btm-thirteen.arff > krk-bn-btm-fourteen.arff
+grep -v 'fourteen$' krk-bn-btm-fourteen.arff > krk-bn-btm-fifteen.arff
+
+Für jeden Wert ZZZ aus {draw, zero, one, two, three, four, five, six,
+                        seven, eight, nine, ten, eleven, twelve, thirteen,
+                        fourteen, fifteen}
+tue:
+cat krk-bn-btm-ZZZ.arff | ./attribAenderung.pl > krk-bain-btm-ZZZ.arff
+  Dabei sind in attribAenderung.pl den Variablen folgende Werte zuzuweisen:
+    my @entfernenAttribute = ('moves');
+    my @neueAttribNamen = ('class');
+    my %neueAttribute = ('class' => '{false, true}');
+  Als Test ist anzugeben:
+    if ($werte[$attribNummern{'moves'}] eq "ZZZ") {
+      push(@neueWerte, ("true"));
+    } else {
+      push(@neueWerte, ("false"));
+    }
+
+In jeder Datei krk-bain-btm-ZZZ.arff ist vor dem Attribut class folgende
+Kommentar-Zeile aufzunehmen:
+% true, if the number of moves to end the game is ZZZ, otherwise false
+bzw. für den Wert draw folgende Zeile:
+% true, if the position is drawn, otherwise false
+
+Daten
+-----
+
+     ZZZ    | Anz. true | Anz. false | Anz. gesamt
+  -------------------------------------------------
+   draw     |    2796   |    25260   |    28056
+   zero     |      27   |    25233   |    25260
+   one      |      78   |    25155   |    25233
+   two      |     246   |    24909   |    25155
+   three    |      81   |    24828   |    24909
+   four     |     198   |    24630   |    24828
+   five     |     471   |    24159   |    24630
+   six      |     592   |    23567   |    24159
+   seven    |     683   |    22884   |    23567
+   eight    |    1433   |    21451   |    22884
+   nine     |    1712   |    19739   |    21451
+   ten      |    1985   |    17754   |    19739
+   eleven   |    2854   |    14900   |    17754
+   twelve   |    3597   |    11303   |    14900
+   thirteen |    4194   |     7109   |    11303
+   fourteen |    4553   |     2556   |     7109
+   fifteen  |    2166   |      390   |     2556
+

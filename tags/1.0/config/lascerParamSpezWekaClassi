@@ -1,0 +1,49 @@
+# Datei          : lascerParamSpezWekaClassi
+# Letzte Änderung: 06. Januar 2008 durch Dietmar Lippold
+# Autoren        : Dietmar Lippold, Copyright 2008
+#
+# Diese Datei gehört zum Projekt Lascer (http://lascer.berlios.de/).
+# Siehe Datei "license.txt" für Hinweise zur Lizenz.
+
+# Datei mit den speziellen Konfigurations-Parametern für die Klasse
+# WekaClassifier. Unabhängig von den anderen Parametern kann noch die
+# Option -logging ohne weiteren Wert in der Kommandozeile angegeben werden.
+
+
+#
+# Parameter zur Steuerung der Erzeugung der Konzepte.
+#
+
+# Gibt an, welche Art von Formel für die Klassifikation erzeugt und
+# verwendet werden soll. Bei "dis" wird nur die disjunktive (eine korrekte)
+# und bei "kon" nur die konjunktive (eine vollständig) erzeugt und zur
+# Klassifikation verwendet. Bei "beste" werden beide Formeln erzeugt, aber
+# es wird nur die bessere von beiden zur Klassifikation verwendet.
+#
+# Mögliche Werte: dis, kon, beste
+# formelArt = beste
+
+# Gibt an, für die Beispiele welcher Klasse eine Formel erzeugt und zur
+# Klassifikation verwendet werden soll. Bei "pos" wird nur die Formel für
+# die positiven Beispiele und bei "neg" nur für die negativen Beispiele
+# erzeugt. Bei "beste" und bei "beide" werden Formeln für die Beispiele
+# beider Klassen erzeugt. Bei "beste" wird aber nur die bessere Formel
+# verwendet. Bei "beide" erfolgt die Klassifikation entsprechend der
+# Veränderung der Formeln bei Hinzunahme des zu klassifizierenden Beispiels
+# jeweils zu den Beispielen einer Klasse.
+#
+# Mögliche Werte: pos, neg, beste, beide
+# formelKlasse = beste
+
+# Gibt den Grenzwert für die Differenz der Komplexitäten zweier Formeln
+# an, bis zu dem (exklusiv) eine lokale Klassifikation im Rahmen einer
+# relativer Klassifikation erfolgt. Bei einer relativen Klassifikation
+# wird das Testbeispiel entsprechend der Veränderung der Formel nach der
+# Hinzunahme des Testbeispiels zu den positiven und zu den negativen
+# Beispielen klassifiziert. Bei einer lokalen Klassifikation wird es
+# entsprechend dem Vergleich der besten Einzel--Konzepte klassifiziert,
+# die das Beispiel enthalten bzw. nicht enthalten.
+#
+# Mögliche Werte: float
+# lokalGrenzwert = 0.0
+

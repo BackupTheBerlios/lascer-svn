@@ -1,0 +1,35 @@
+Erzeugung der Dateien:
+
+./boolTabGenerator.pl 25 1000 50 50 0 1 > logikGen-25-1000-50.pla
+./boolTabGenerator.pl 50 1000 50 50 0 1 > logikGen-50-1000-50.pla
+./boolTabGenerator.pl 50 2000 50 50 0 1 > logikGen-50-2000-50.pla
+./boolTabGenerator.pl 100 2000 50 50 0 1 > logikGen-100-2000-50.pla
+./boolTabGenerator.pl 100 4000 50 50 0 1 > logikGen-100-4000-50.pla
+./boolTabGenerator.pl 250 4000 50 50 0 1 > logikGen-250-4000-50.pla
+./boolTabGenerator.pl 250 10000 50 50 0 1 > logikGen-250-10000-50.pla
+./boolTabGenerator.pl 500 10000 50 50 0 1 > logikGen-500-10000-50.pla
+./boolTabGenerator.pl 500 20000 50 50 0 1 > logikGen-500-20000-50.pla
+./boolTabGenerator.pl 1000 20000 50 50 0 1 > logikGen-1000-20000-50.pla
+
+./boolTabGenerator.pl 25 1000 50 10 0 1 > logikGen-25-1000-10.pla
+./boolTabGenerator.pl 50 1000 50 10 0 1 > logikGen-50-1000-10.pla
+./boolTabGenerator.pl 50 2000 50 10 0 1 > logikGen-50-2000-10.pla
+./boolTabGenerator.pl 100 2000 50 10 0 1 > logikGen-100-2000-10.pla
+./boolTabGenerator.pl 100 4000 50 10 0 1 > logikGen-100-4000-10.pla
+./boolTabGenerator.pl 250 4000 50 10 0 1 > logikGen-250-4000-10.pla
+./boolTabGenerator.pl 250 10000 50 10 0 1 > logikGen-250-10000-10.pla
+./boolTabGenerator.pl 500 10000 50 10 0 1 > logikGen-500-10000-10.pla
+./boolTabGenerator.pl 500 20000 50 10 0 1 > logikGen-500-20000-10.pla
+./boolTabGenerator.pl 1000 20000 50 10 0 1 > logikGen-1000-20000-10.pla
+
+./boolTabGenerator.pl 25 1000 50 2 0 1 > logikGen-25-1000-02.pla
+./boolTabGenerator.pl 50 1000 50 2 0 1 > logikGen-50-1000-02.pla
+./boolTabGenerator.pl 50 2000 50 2 0 1 > logikGen-50-2000-02.pla
+./boolTabGenerator.pl 100 2000 50 2 0 1 > logikGen-100-2000-02.pla
+./boolTabGenerator.pl 100 4000 50 2 0 1 > logikGen-100-4000-02.pla
+./boolTabGenerator.pl 250 4000 50 2 0 1 > logikGen-250-4000-02.pla
+./boolTabGenerator.pl 250 10000 50 2 0 1 > logikGen-250-10000-02.pla
+./boolTabGenerator.pl 500 10000 50 2 0 1 > logikGen-500-10000-02.pla
+./boolTabGenerator.pl 500 20000 50 2 0 1 > logikGen-500-20000-02.pla
+./boolTabGenerator.pl 1000 20000 50 2 0 1 > logikGen-1000-20000-02.pla
+

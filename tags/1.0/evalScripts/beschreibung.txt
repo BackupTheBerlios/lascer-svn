@@ -1,0 +1,45 @@
+                        Beschreibung der Evaluation
+
+
+Die Dateien eval*.sh in diesem Verzeichnis dienen der Evaluation der
+verschiedenen Verfahren für die Klassifikation. Sie sind aus dem
+übergeordneten Verzeichnis aufzurufen. Aus den Ausgabe-Dateien kann mit
+dem Script wekaTestsAuswert.pl eine Auswertung in Tabellenform erstellt
+werden.
+
+Vor der Evaluation sind die Datensätze von
+ftp://ftp.berlios.de/pub/lascer/arffDaten/ zu downloaden, in das Verzeichnis
+"arffDaten" zu entpacken (mit "tar -xf datei.tar") und die in den dann
+vorhandenen Unterverzeichnissen enthaltenen Dateien zu dekomprimieren (mit
+"gunzip datei.arff.gz").
+
+AUch für die Evaluation der Verfahren für die Erzeugung logischer Formeln
+aus den boolschen Daten (Verzeichnis LogikGen und Spam) können die Scripte
+run*.sh benutzt werden, wobei die jeweilige Datei sowohl als Trainings- wie
+als Testdatenatz anzugeben ist. Ein Aufruf kann also z.B. sein:
+
+  ./evalScripts/runPrism.sh arffDaten/Spam/spam-1-mi.arff -T arffDaten/Spam/spam-1-mi.arff
+
+bzw.
+
+  ./evalScripts/runPrism.sh arffDaten/LogikGen/logikGen-25-1000-50.arff -T arffDaten/LogikGen/logikGen-25-1000-50.arff
+
+Eventuell zu verwendende Optionen sind danach anzugeben, also z.B.:
+
+  ./evalScripts/runJ48.sh arffDaten/Spam/spam-1-mi.arff -T arffDaten/Spam/spam-1-mi.arff -U -M 1
+
+Die erzeugte Formel ist dann "per Hand" auszuwerten, d.h. in Bezug auf ihre
+Größe zu beschreiben. Für einen von J48 erzeugten Entscheidungsbaum gibt es
+aber das Script "anzLiterale-j48.pl".
+
+Für Lascer kann auch das Script runFormelErz.sh benutzt werden, also z.B.:
+
+  ./execScripts/runFormelErz.sh -ausgabeFormelKlasse pos -ausgabeFormelArt dis
+arffDaten/LogikGen/logikGen-25-1000-50.arff
+
+Dann wird die Größe der Formel schon in der Ausgabe angegeben.
+
+Ein solcher Aufruf ist auch für die Erzeugung der Begriffe zu den
+Schachendspielen zu verwenden, wobei vorher im Programmtext die zu
+verwendenden mathematischen Funktionen festzulegen sind.
+
