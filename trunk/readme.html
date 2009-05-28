@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="keywords" content="Begriffserwerb, Klassifikation, Maschinelles Lernen, logische Minimierung">
+<title>Lascer</title>
+</head>
+
+<body>
+<h1>Lascer</h1>
+
+Lascer ist ein Software-System zum Bereich Data-Mining. Informationen zum
+Projekt und Downloadmöglichkeiten sind verfügbar unter
+<a href="http://developer.berlios.de/projects/lascer/">http://developer.berlios.de/projects/lascer/</a> .
+
+
+<h2>Funktion</h2>
+
+<p>
+Lascer ist ein Software-System, das Charakterisierungen zu vorgegebenen
+klassifizierten Daten (Beispielen) erzeugt. Die Beispiele sind dabei als
+Attribut-Vektoren im
+<a href="http://www.cs.waikato.ac.nz/~ml/weka/arff.html">ARFF-Format</a>
+anzugeben und die Charakterisierung, d.h. die Beschreibung der Klassen,
+erfolgt als Menge von Regeln, die möglichst klein (einfach) sein soll. Die
+Regeln können insbesondere mathematische Funktionen enthalten, wodurch eine
+Menge von Regeln als analog zu einem menschlichen Begriff betrachtet werden
+kann (Problem <em>Begriffserwerb</em>). Wenn die Beispiele nur boolesche
+Werte enthalten und boolesch (zweiwertig) klassifiziert sind, entsprechen
+die erzeugten Regeln booleschen Formeln (spezielleres Problem <em>zweistufige
+logische Minimierung</em>).
+</p>
+
+<p>
+Standardmäßig erzeugt Lascer Regeln, die die gegebenen Beispiele korrekt
+und vollständig beschreiben, wobei die Beispiele aber auch unbekannte (nicht
+gegebene) Werte enthalten können. Es kann aber auch mit Beispielmengen
+umgehen, die unvollständig sind oder in denen Beispiele fehlerhafte Werte
+besitzen (durch Verwendung von <cite>pruning</cite>). Eine wichtige
+Eigenschaft von Lascer besteht außerdem darin, dass es sowohl in Bezug auf
+die Laufzeit wie in Bezug auf den Speicherbedarf auf die Verarbeitung von
+großen Mengen von Beispielen ausgelegt ist. Lascer wurde insbesondere für die
+Erzeugung von Begriffen zu einfachen Schachendspielen eingesetzt, wobei die
+möglichen Stellungen oder Züge eines Endspiels die Beispiele darstellen.
+</p>
+
+<p>
+Zur Erzeugung einer Lösung transformiert Lascer ein gegebenes Problem in das
+<cite>Set Covering and Exclusion Problem (SCEP)</cite>, einer
+Verallgemeinerung des <cite>Set Covering Problem (SCP)</cite>. Dieses
+wird dann näherungsweise gelöst mit einem Verfahren für das allgemeine
+SCP (mit nicht-linearer Kostenfunktion).
+</p>
+
+
+<h2>Komponenten</h2>
+
+<p>
+Das Projekt umfasst derzeit folgende Komponenten, die auch eigenständig
+von Bedeutung sind:
+</p>
+
+<DL>
+<dt>endspiel</dt>
+<dd><p>Analysiert Endspiele mit drei oder vier Steinen und kann die analysierten
+    Daten speichern. Diese können dann interaktiv untersucht werden.</p></dd>
+
+<dt>egtb (end game table bases)</dt>
+<dd><p>Erzeugt aus einer Datei mit den analysierten Daten eines Endspiels
+    eine Datei im ARFF-Format.</p></dd>
+
+<dt>weka/coreExtended</dt>
+<dd><p>Eine Erweiterung des Frameworks
+    <a href="http://www.cs.waikato.ac.nz/~ml/weka/">Weka</a> um
+    Meta-Attribute und Meta-Instanzen, wobei letztere Beschreibungen der
+    normalen Attribute darstellen.</p></dd>
+
+<dt>geometrischeClusterung</dt>
+<dd><p>Erzeugt zu einer Menge von Punkten im n-dimensionalen Raum deren
+    konvexe Hülle. Die Facetten der konvexen Hüllen können in Lascer als
+    Prädikate (zur Differenzierung zwischen Punkten, die Beispiele
+    darstellen) verwendet werden.</p></dd>
+
+<dt>mengenUeberdeckung</dt>
+<dd><p>Realisiert das Verfahren zur Erzeugung einer Lösung zum SCP und zum
+    SCEP.</p></dd>
+
+<dt>lascer</dt>
+<dd><p>Erzeugt zu gegebenen Daten Funktionen und Prädikate und daraus dann
+    ein SCEP. Wandelt eine Lösung des SCEP anschließend in eine Menge von
+    Regeln um.</p></dd>
+</DL>
+
+<p>
+In Zukunft werden einzelne dieser Komponenten eventuell in eigene Projekte
+ausgegliedert. Bis auf die Komponente <cite>endspiel</cite>, die in Pascal
+implementiert wurde, wurden alle anderen Komponenten in Java implementiert.
+Zur Konvertierung von und zu ARFF-Dateien sind perl-Scripte vorhanden, zur
+Ausführung der Programme sh-Scripte.
+</p>
+
+<p>
+Darüber hinaus nutzt Lascer einige Bibliotheken, von denen
+<a href="http://architeuthis.berlios.de/">Architeuthis</a> und
+<a href="http://mathcollection.berlios.de/">MathCollection</a>
+zusammen mit Lascer entwickelt wurden.
+</p>
+
+
+<h2>Entstehungsgeschichte und Entwickler</h2>
+
+<p>
+Lascer entstand (bis auf die Komponente <cite>endspiel</cite>, die früher
+entwickelt wurde) als System der
+<a href="http://www.cuvillier.de/flycms/de/html/30/-UickI3zKPS7yd0Y=/Buchdetails.html">Dissertation</a>
+von Dietmar Lippold in der Informatik an der Universität Stuttgart,
+hauptsächlich am <cite>Institut für Intelligente Systeme</cite>. Außer
+Dietmar Lippold haben im Rahmen von Diplom- und Studienarbeiten,
+Sofware-Praktika und Hiwi-Tätigkeiten folgende Personen wesentliche Teile
+mehrerer der Komponenten entwickelt und implementiert:
+</p>
+
+<UL>
+<LI>Edgar Binder (egtb, mengenUeberdeckung)</LI>
+<LI>Haiyi Peng (geometrischeClusterung)</LI>
+<LI>Jing Jing Wei (geometrischeClusterung)</LI>
+<LI>Michael Wohlfart (mengenUeberdeckung)</LI>
+<LI>Natalia Sevcenko (mengenUeberdeckung)</LI>
+<LI>Rene Berleong (mengenUeberdeckung)</LI>
+<LI>Wolfgang Tischer (mengenUeberdeckung)</LI>
+<LI>Yang Zhou (geometrischeClusterung, weka/coreExtended)</LI>
+</UL>
+
+<p>
+Ihre Namen sind auch in den jeweiligen Quelltext-Dateien genannt.
+</p>
+
+<p>
+Darüber hinaus haben die Personen, die an der Entwicklung der oben genannten
+Komponenten <cite>Architeuthis</cite> und <cite>MathCollection</cite>
+beteiligt waren, durch die beiden Komponenten ebenfalls wichtige Beiträge
+zum Gesamtsystem geleistet. Ihre Namen sind auf den beiden Projekt-Seiten
+genannt.
+</p>
+
+
+<h2>Download und Kontakt</h2>
+
+<p>
+Die Releases, insbesondere die aktuelle stabile Version, sind abrufbar unter
+<a href="http://developer.berlios.de/project/showfiles.php?group_id=10520">
+http://developer.berlios.de/project/showfiles.php?group_id=10520</a>. Einige
+ARFF-Dateien (diejenigen, die in der oben genannten Dissertation verwendet
+wurden) sind abrufbar unter
+<a href="ftp://ftp.berlios.de/pub/lascer/arffDaten/">ftp://ftp.berlios.de/pub/lascer/arffDaten/</a>,
+eine Anleitung zur Benutzung von Lascer ist abrufbar unter
+<a href="https://developer.berlios.de/docman/?group_id=10520">https://developer.berlios.de/docman/?group_id=10520</a>.
+</p>
+
+<p>
+Die aktuelle Entwicklerversion ist aus dem Subversion-Repository abrufbar
+unter dem URL <kbd>svn://svn.berlios.de/lascer</kbd>. Man kann diese
+z.B. mit folgendem Befehl downloaden:
+<kbd>svn checkout svn://svn.berlios.de/lascer</kbd><br>
+Das Repository kann kann man sich auch mittels Web-Browser anschauen unter
+<a href="http://svn.berlios.de/viewcvs/lascer/">http://svn.berlios.de/viewcvs/lascer/</a><p>
+</p>
+
+<p>
+Anregungen und Fragen bitte senden an Dietmar Lippold: lippold at users.berlios.de
+</p>
+
+<hr>
+<div>
+  <sub>Letzte Änderung: 27.05.2009 durch Dietmar Lippold
+       (lippold at users.berlios.de)</sub>
+</div>
+<div>
+  <a href="http://developer.berlios.de" title="BerliOS Developer">
+     <img src="http://developer.berlios.de/bslogo.php?group_id=10520"
+          width="124px" height="32px" border="0" alt="BerliOS Developer Logo"></a>
+</div>
+
+</body>
+</html>
+
