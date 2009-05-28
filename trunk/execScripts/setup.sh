@@ -26,6 +26,9 @@ fi
 # Das build-Verzeichnis für die compilierten Dateien.
 BUILD_DIR="build"
 
+# Das deploy-Verzeichnis für die jar-Dateien.
+DEPLOY_DIR="deploy"
+
 # Die jar-Dateien für den classpath.
 CLASSPATH="libs/mathCollection.jar"
 CLASSPATH="$CLASSPATH:libs/commandline.jar"
@@ -36,6 +39,7 @@ CLASSPATH="$CLASSPATH:libs/mengenUeberdeckung.jar"
 CLASSPATH="$CLASSPATH:libs/archiUser.jar"
 CLASSPATH="$CLASSPATH:source/"
 CLASSPATH="$CLASSPATH:$BUILD_DIR/"
+CLASSPATH="$CLASSPATH:$DEPLOY_DIR/lascer.jar"
 
 # Das Verzeichnis mit den properties- und config-Dateien.
 CONFIG_DIR="config"
