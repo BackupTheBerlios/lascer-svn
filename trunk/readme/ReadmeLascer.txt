@@ -55,7 +55,7 @@ Zur Verwendung werden folgende Bibliothek benötigt:
 
   geomClusterung.jar
     http://lascer.berlios.de/
-      Teilprojekt Clusterung.
+      Teilprojekt KonvexeHuelle.
     Getestete Version: 1.0
 
 Die Verwendung von Lascer ist in der Datei evalScripts/beschreibung.txt
