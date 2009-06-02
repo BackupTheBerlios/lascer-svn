@@ -1,6 +1,6 @@
 /*
  * Dateiname      : WekaClassifier.java
- * Letzte Änderung: 18. Dezember 2007
+ * Letzte Änderung: 02. Juni 2009
  * Autoren        : Dietmar Lippold
  * Copyright (C)  : Dietmar Lippold, 2007
  *
@@ -57,6 +57,11 @@ import lascer.konzepte.einzelne.Konjunktion;
  * @author  Dietmar Lippold
  */
 public class WekaClassifier extends Classifier implements OptionHandler {
+
+    /**
+     * Die Revision der Software.
+     */
+    public static final String REVISION = "1.0.*";
 
     /**
      * Der Parser für die Kommandozeilen-Parameter.
@@ -167,6 +172,15 @@ public class WekaClassifier extends Classifier implements OptionHandler {
 
         // Die Parameter für den Parser initialisieren.
         parser.setComandline(new String[0]);
+    }
+
+    /**
+     * Returns the revision string.
+     *
+     * @return  the revision.
+     */
+    public String getRevision(){
+        return REVISION;
     }
 
     /**
