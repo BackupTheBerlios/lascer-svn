@@ -28,7 +28,7 @@ Zur Verwendung werden folgende Bibliothek benötigt:
 
   weka.jar
     http://sourceforge.net/projects/weka/
-    Getestete Version: 3.4.7
+    Getestete Version: 3.6.0
 
   commandline.jar
     http://architeuthis.berlios.de/
